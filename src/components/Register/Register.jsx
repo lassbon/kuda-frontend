@@ -9,10 +9,10 @@ function Register() {
         <div className='hover:transition ease-in-out delay-50'>
           <img src={Kuda_Logo} className=" w-[5rem] " alt="Kuda" />
         </div>
-        <button className="border border-[#40196d]  hover:-translate-y-1 duration-700 bg-[#eff1ff] p-2 rounded-lg text-[#40196d]">Open an Account</button>
+        <button type='submit' className="border border-[#40196d] w-[10rem]  hover:-translate-y-1 duration-700 bg-[#eff1ff] p-2 rounded-lg text-[#40196d]">Open an Account</button>
       </nav>
 
-    <body className="border flex-col w-[32rem] ">
+    <body className="mx-[2rem] flex-col w-[32rem] ">
       <div className='flex justify-center my-5'>
         <p className=' bg-[#eff1ff] w-[28rem] p-2 text-[#40196d] text-xs rounded-lg'>Please check that you are visiting the correct URL <b><a href='https://app.kuda.com' className='text-[#49d38a]' >https://app.kuda.com</a></b> </p>
       </div>
@@ -22,7 +22,7 @@ function Register() {
         <p className='w-[25rem]'>To sign up, please type in the email address linked to your Kuda account</p>
         
         <form className=' my-5'>
-                <label htmlFor="" className='mb-5'>Surname</label>
+                <label htmlFor="" className='mb-5 text-sm'>Surname</label>
                 <br/>
                   <div className="w-[25rem]">
                     <input type="text"
@@ -35,7 +35,7 @@ function Register() {
                     />
                   </div>
 
-                  <label htmlFor="" className='mb-5'>Othernames</label>
+                  <label htmlFor="" className='mb-5 text-sm'>Othernames</label>
                   <br/>
                   <div className="w-[25rem]">
                       <input type="text"
@@ -48,45 +48,48 @@ function Register() {
                     />
                   </div>
 
-                    <label htmlFor="">Email</label>
+                    <label htmlFor="" className='text-sm'>Email</label>
                     <br/>
                     <div className="w-[25rem]">
                       <input type="email"
                         id="Email"
                         name="Email"
                         className="rounded-lg w-[25rem] h-[3rem] my-3 p-2"
-                        placeholder="Email"
+                        placeholder="Abc@gmail.com"
                         style={{ border: "none", outline: "none" }}
                         required
                       />
                     </div>
 
-                <label htmlFor="">Password</label>
+                <label htmlFor="" className='text-sm'>Password</label>
                   <div className="flex items-center my-3 w-[25rem] h-[3rem] justify-between bg-[#fff] rounded-lg">
                     <input type="password"
                       id="Password"
                       name="Password"
-                      className="rounded-lg  w-[25rem] h-[3rem] p-2"
-                      placeholder="Password"
+                      className="rounded-lg  w-[23rem] h-[3rem] p-2"
+                      placeholder="********"
                       style={{ border: "none", outline: "none" }}
                       required
                     />
-                    <span><BsFillEyeFill/></span>
+                    <BsFillEyeFill className='mr-5'/>
                   </div>
 
-                <label htmlFor="">Repeat Password</label>
+                <label htmlFor="" className='text-sm'>Repeat Password</label>
                 <br/>
                 <div className="flex items-center my-3 w-[25rem] h-[3rem] justify-between bg-[#fff] rounded-lg">
                   <input type="password"
                       id="Repeat Password"
                       name="Repeat Password"
-                      className="rounded-lg w-[25rem] h-[3rem] p-2"
-                      placeholder="Repeat Password"
+                      className="rounded-lg w-[23rem] h-[3rem] p-2"
+                      placeholder="********"
                       style={{ border: "none", outline: "none" }}
                       required
                     />
-                    <span> <BsFillEyeFill/> </span>
+                    <BsFillEyeFill  className='mr-5'/>
                 </div>
+
+                <button type='submit' className="border border-[#40196d] bg-[#40196d] w-[10rem] mt-[2rem] hover:-translate-y-1 duration-700 p-2 rounded-lg text-white text-sm">Register</button>
+                <p className='py-3'>Click <b><a href='https://app.kuda.com/' className='text-[#40196d]'>here</a></b> to login, if you have an account with us</p>
         </form>
       </div>
 
