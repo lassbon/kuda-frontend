@@ -1,11 +1,13 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import "./App.css"
-import Register from "./components/Register/Register"
+// import Register from "./components/Register/Register"
+import VerifyEmailOtp from "./components/Otp/VerifyEmailOtp"
+import VerifyPhoneOtp from "./components/Otp/VerifyPhoneOtp"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-   <Register />
+   <VerifyEmailOtp />
   );
 
 

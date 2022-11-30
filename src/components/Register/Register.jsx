@@ -9,7 +9,7 @@ function Register() {
         <div className='hover:transition ease-in-out delay-50'>
           <img src={Kuda_Logo} className=" w-[5rem] " alt="Kuda" />
         </div>
-        <button type='submit' className="border border-[#40196d] w-[10rem]  hover:-translate-y-1 duration-700 bg-[#eff1ff] p-2 rounded-lg text-[#40196d]">Open an Account</button>
+        <button type='submit' className="border border-[#40196d] w-[10rem]  hover:-translate-y-1 duration-700 bg-[#eff1ff] p-2 rounded-[3rem] text-green-500">Open an Account</button>
       </nav>
 
     <body className="mx-[2rem] flex-col w-[32rem] ">
@@ -78,8 +78,8 @@ function Register() {
                 <br/>
                 <div className="flex items-center my-3 w-[25rem] h-[3rem] justify-between bg-[#fff] rounded-lg">
                   <input type="password"
-                      id="Repeat Password"
-                      name="Repeat Password"
+                      id="RepeatPassword"
+                      name="RepeatPassword"
                       className="rounded-lg w-[23rem] h-[3rem] p-2"
                       placeholder="********"
                       style={{ border: "none", outline: "none" }}
