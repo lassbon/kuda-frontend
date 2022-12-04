@@ -2,13 +2,15 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import "./App.css"
 // import Register from "./components/Register/Register"
-import VerifyEmailOtp from "./components/Otp/VerifyEmailOtp"
-import VerifyPhoneOtp from "./components/Otp/VerifyPhoneOtp"
-import Dashboard from "./components/Dashboard/Dashboard"
+//import VerifyEmailOtp from "./components/Otp/VerifyEmailOtp"
+//import VerifyPhoneOtp from "./components/Otp/VerifyPhoneOtp"
+//import Dashboard from "./components/Dashboard/Dashboard"
+//import Invest from "./components/Invest/Invest"
+import Stocks from "./components/Stocks/Stocks"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-   <Dashboard />
+   <Stocks />
   );
 
 
