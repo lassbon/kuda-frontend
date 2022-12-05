@@ -19,6 +19,13 @@ function Navbar() {
             <a href='/'>Home</a>
           </p>
         </div>
+
+        <div className='flex items-center'>
+          <img src={card} alt='card' className='w-[1.5rem]' />
+          <p className='text-[#b2a2c4] mx-[1rem]'>
+            <a href='/dashboard'>Dashboard </a>
+          </p>
+        </div>
         <div className='flex items-center'>
           <img src={pay} alt='pay' className='w-[1.5rem]' />
           <p className='text-[#b2a2c4] mx-[1rem]'>
@@ -43,14 +50,22 @@ function Navbar() {
             <a href='/card'>Card </a>
           </p>
         </div>
+        <div className='flex items-center'>
+          <img src={card} alt='card' className='w-[1.5rem]' />
+          <p className='text-[#b2a2c4] mx-[1rem]'>
+            <a href='/referrals'>Referrals </a>
+          </p>
+        </div>
       </div>
       <div className='flex items-center'>
-        <img
-          src={account}
-          alt='account'
-          className='w-[2rem] h-[2rem] rounded-full '
-        />
-        <h1 className='mx-[0.5rem]'>Account</h1>
+        <a href='/account'>
+          <img
+            src={account}
+            alt='account'
+            className='w-[2rem] h-[2rem] rounded-full '
+          />
+          <h1 className='mx-[0.5rem]'>Account</h1>
+        </a>
       </div>
     </nav>
   )

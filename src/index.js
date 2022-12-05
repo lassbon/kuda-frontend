@@ -14,7 +14,9 @@ import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
 import Dashboard from "./components/pages/Dashboard/Dashboard";
 import Invest from "./components/pages/Invest/Invest";
 import Budget from "./components/pages/Budget/Budget";
-
+import Card from "./components/pages/Card/Card";
+import Account from "./components/pages/Account/AccountDashboard";
+import Referrals from "./components/pages/Referrals/Referrals";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,24 @@ const router = createBrowserRouter([
     element: <Budget />,
     errorElement:<PageNotFound />
   },
+  {
+    path: "/card",
+    element: <Card />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/account",
+    element: <Account />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/referrals",
+    element: <Referrals />,
+    errorElement:<PageNotFound />
+  },
+
+  
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"))

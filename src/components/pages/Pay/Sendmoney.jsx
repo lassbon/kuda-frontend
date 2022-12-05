@@ -5,13 +5,15 @@ import HumanImage from "../../../img/Svg/Humanimage.svg"
 import GreenArrow from "../../../img/Svg/Greenarrow.svg"
 import Navbar from "../Navbar/Navbar"
 import PayCom from "./Paycom"
-
+import Header from "./Header"
 function Sendmoney() {
   return (
     <>
       <Navbar />
+
       <main className='container'>
         <PayCom />
+        <Header />
         <div className='flex justify-center w-[40rem] h-[25rem] mx-auto bg-white drop-shadow-xl'>
           <div className='flex flex-col w-[30rem]'>
             <h2 className='py-5 text-[#010101] font-bold text-xl text-center'>
