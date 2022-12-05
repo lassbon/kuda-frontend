@@ -21,14 +21,14 @@ const AccountDashboard = () => {
   return (
     <main className="font-Mulish">
         <Navbar />
-        <div className="content flex flex-col items-center text-kuda-purple">
+        <div className="content px-4 sm:flex sm:flex-col sm:items-center text-kuda-purple">
             <h1 className='font-bold text-2xl text-center my-8'>Account</h1>
-            <div className='shadow-3xl p-4 bg-white relative rounded-sm'>
-            <div className='sm:flex justify-between p-4 gap-12 w-[53.5rem]'>
-                <div className="left  basis-1/2 flex flex-col gap-y-4">
+            <div className='shadow-3xl p-4 bg-white rounded-sm'>
+            <div className='sm:flex sm:justify-between  p-4 sm:gap-12 max-w-[53.5rem] w-full'>
+                <div className="left  sm:basis-1/2 flex flex-col sm:gap-y-4">
                     <div className="profile flex items-center p-2 ">
                          <div className="profile-pics basis-1/4">
-                            <img src={account} alt="brandName" className=' w-24 h-24 shadow-3xl rounded-full'/>
+                            <img src={account} alt="brandName" className='object-cover w-24 h-24 shadow-3xl rounded-full'/>
                          </div> 
                         <div className="profile-info pt-2 px-4 basis-3/4 ">
                            
@@ -46,7 +46,7 @@ const AccountDashboard = () => {
 
                 </div>
 
-                <div className="right basis-1/2  flex flex-col gap-y-4">
+                <div className="right sm:basis-1/2  flex flex-col sm:gap-y-4">
                     <div className="invite text-center bg-[#40196d] px-20 py-5 rounded-sm">
                         <p className='text-white mb-2'>Invite and Earn</p>
                         <button className='px-8 py-2 bg-opay-green rounded-lg'>View code</button>

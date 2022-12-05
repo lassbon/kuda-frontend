@@ -8,7 +8,7 @@ const Card = ({text, icon, isIconChevron=true}) => {
          <img src={icon} alt="" className='w-[1.625rem] h-[1.8125rem] p-1 shadow-4xl' />
          <p className='font-bold text-[#40196d]'>{text}</p>
     </div>
-    <span>{isIconChevron ? <FaChevronRight className='text-gray-300' /> : <IoToggleSharp className='text-gray-300'/>}</span>
+    <span>{isIconChevron ? <FaChevronRight className='text-gray-300' /> : <IoToggleSharp className='text-3xl text-gray-300'/>}</span>
 </div>
   )
 }
