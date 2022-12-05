@@ -5,7 +5,12 @@ import "./App.css"
 import VerifyEmailOtp from "./components/Otp/VerifyEmailOtp"
 import VerifyPhoneOtp from "./components/Otp/VerifyPhoneOtp"
 import Dashboard from "./components/Dashboard/Dashboard"
-import Referrals from "./components/Referrals/Referrals"
+import Assignment from "./components/Budget/Budget"
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(
+   <Assignment />
+  );
 
 
 // If you want to start measuring performance in your app, pass a function
