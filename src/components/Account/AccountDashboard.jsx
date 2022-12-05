@@ -1,13 +1,8 @@
 import React from 'react'
 import Card from './Card'
-import logo from "../../img/Svg/Kuda_Logo.svg"
-import home from "../../img/Svg/Home.svg"
-import pay from "../../img/Svg/Pay.svg"
-import invest from "../../img/Svg/Invest.svg"
-import budget from "../../img/Svg/Budget.svg"
-import card from "../../img/Svg/Card.svg"
+
 import account from "../../img/account.jpg"
-import svg9 from '../../img/Svg/svg9.svg'
+import {IoCopy} from  "react-icons/io5"
 import svg10 from '../../img/Svg/svg10.svg'
 import svg12 from '../../img/Svg/svg12.svg'
 import svg13 from '../../img/Svg/svg13.svg'
@@ -19,52 +14,17 @@ import svg18 from '../../img/Svg/svg18.svg'
 import svg19 from '../../img/Svg/svg19.svg'
 import svg20 from '../../img/Svg/svg20.svg'
 import svg21 from '../../img/Svg/svg21.svg'
-import {FaToggleOff} from 'react-icons/fa'
+import Navbar from './Navbar'
+
 
 const AccountDashboard = () => {
   return (
     <main className="font-Mulish">
-        <nav className="bg-white flex justify-between items-center px-[3rem] py-[1rem] drop-shadow-md">
-
-<img src={logo} alt="" className="w-[5rem] " />
-
-<div className="flex gap-x-8">
-    <div className="flex items-center">
-        <img src={home} alt="home" className="w-[1.5rem] " />
-        <p className="text-[#b2a2c4] mx-[1rem]" >Home</p>
-    </div>
-    <div className="flex items-center">
-        <img src={pay} alt="pay" className="w-[1.5rem]" />
-        <p className="text-[#b2a2c4] mx-[1rem]">Pay</p>
-    </div>
-    <div className="flex items-center">
-        <img src={invest} alt="invest" className="w-[1.5rem]" />
-        <p className="text-[#b2a2c4] mx-[1rem]">Invest</p>
-    </div>
-    <div className="flex items-center">
-        <img src={budget} alt="budget" className="w-[1.5rem]" />
-        <p className="text-[#b2a2c4] mx-[1rem]">Budget</p>
-    </div>
-    <div className="flex items-center">
-        <img src={card} alt="card" className="w-[1.5rem]" />
-        <p className="text-[#b2a2c4] mx-[1rem]">Card</p>
-    </div>
-    
-    
-</div>
-<div className="flex items-center">
-        <img src={account} alt="account" className="w-[2rem] h-[2rem] rounded-full " />
-        <h1 className="mx-[0.5rem]">Account</h1>
-</div>
-
-
-</nav>
-
-
-        <div className="content flex flex-col items-center">
+        <Navbar />
+        <div className="content flex flex-col items-center text-kuda-purple">
             <h1 className='font-bold text-2xl text-center my-8'>Account</h1>
             <div className='shadow-3xl p-4 bg-white relative rounded-sm'>
-            <div className='flex justify-between p-4 gap-12 w-[53.5rem]'>
+            <div className='sm:flex justify-between p-4 gap-12 w-[53.5rem]'>
                 <div className="left  basis-1/2 flex flex-col gap-y-4">
                     <div className="profile flex items-center p-2 ">
                          <div className="profile-pics basis-1/4">
@@ -72,9 +32,9 @@ const AccountDashboard = () => {
                          </div> 
                         <div className="profile-info pt-2 px-4 basis-3/4 ">
                            
-                             <p className='flex justify-between font-bold'>Aminah Adedeji <span>T3</span></p>
+                             <p className='flex justify-between font-bold text-black'>Aminah Adedeji <span>T3</span></p>
                              <p className='font-semibold'>Copy Account Number</p>
-                            <p className='flex gap-2 items-center text-lg'><span><img src={svg9} alt="" className='w-[1.3rem] h-[1.3rem]' /></span> 2007595039</p>
+                            <p className='flex gap-2 items-center text-lg'><span><IoCopy className='w-[1.3rem] h-[1.3rem]' /></span> 2007595039</p>
                         </div>
                     </div>
                           <Card text='Verify Profile' icon={svg10}/>
@@ -96,13 +56,11 @@ const AccountDashboard = () => {
                    <Card text='Legal' icon={svg18}/>
                    <Card text='FAQs' icon={svg13}/>
                    <Card text='Chat With Us' icon={svg19}/>
-                   <Card text='Hide Balance' icon={svg20}/>
-                   <Card text='Dark Mode' icon={svg21}/>
-                </div>
-
-                
+                   <Card text='Hide Balance' icon={svg20} isIconChevron={false}/>
+                   <Card text='Dark Mode' icon={svg21} isIconChevron={false}/>
+                </div>   
             </div>
-            <div className="signOut text-center my-8  font-bold text-red-500">
+            <div className="signOut text-center mt-8 mb-2 font-bold text-red-500">
                     <button>Sign Out</button>
                 </div>
             </div>

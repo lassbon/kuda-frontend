@@ -16,6 +16,7 @@ module.exports = {
       },  
       colors: {
         'opay-green': '#1dcf9f',
+        'kuda-purple': '#40196d'
         
       },
     },
