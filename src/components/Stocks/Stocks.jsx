@@ -95,7 +95,10 @@ function Stocks () {
    <div className="flex flex-col items-center">
    <button type="submit" className=" text-white font-semibold bg-[#411a6e] w-[15rem] py-[0.8rem] px-[0.7rem] rounded-[1rem] text-center mt-[2rem] mb-[3rem] hover:-translate-y-1 duration-700 ">Find A Stock</button>
     <p className=" w-[20rem]">Kuda doesn’t give investment advice. Please, consult your legal, financial and tax advisers before you buy stocks.</p>
-    <p className="">Powered by </p><span className=""> {bamboo} </span>
+    <div className="flex gap-x-2 w-[13rem] h-[2rem]">
+        <p className="self-end">Powered by </p>
+        <img src={bamboo} alt="" className="w-[5rem] text-[#19cd9d]"/>
+    </div>
    </div>
 
 
