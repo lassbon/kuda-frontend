@@ -1,43 +1,17 @@
 import React from "react"
-import BlueArrow from "../../img/Svg/Bluearrow.svg"
-import AirtimeImage from "../../img/Svg/Airtime.svg"
-import PaybillImage from "../../img/Svg/Paybill.svg"
-import GiftcardImage from "../../img/Svg/Giftcard.svg"
-import CardlessImage from "../../img/Svg/Cardless.svg"
 import KudaImage from "../../img/Svg/Kudaimage.svg"
 import GreaterThan from "../../img/Svg/Greaterthan.svg"
 import HumanImage from "../../img/Svg/Humanimage.svg"
 import GreenArrow from "../../img/Svg/Greenarrow.svg"
+import PayNavbar from "../PayFolder/Navbar"
+import PayCom from "../PayFolder/Paycom"
 
 
 function Sendmoney(){
     return(
         <main className="container">
-                <h1 className="text-2xl text-center text-[#5d3b83] font-bold my-6">Pay</h1>
-             <nav className="flex justify-center gap-x-8 mb-10">
-                <a href="#" className="flex items-center bg-white drop-shadow-xl py-[0.5rem] px-[0.6rem] rounded-[0.5rem] ">
-                    <img src={BlueArrow} alt="Send arrow" className="w-[0.6rem]" /> &nbsp;
-                    <p className="text-[#b4b4b4] font-semibold">Send Money</p>
-                </a>
-                    
-                <a href="#" className="flex items-center bg-white drop-shadow-xl py-[0.5rem] px-[0.6rem] rounded-[0.5rem]"> 
-                    <img src={AirtimeImage} alt="Buy airtime" className="w-[0.5rem]"/>&nbsp;
-                    <p className="text-[#b4b4b4] font-semibold">Buy Airtime</p>
-                </a>
-                <a href="#" className="flex items-center bg-white drop-shadow-xl py-[0.5rem] px-[0.6rem] rounded-[0.5rem]">
-                    <img src={PaybillImage} alt="Cardless Paybill" className="w-[0.6rem]"/>&nbsp;
-                    <p className="text-[#b4b4b4] font-semibold">Pay A Bill</p>
-                </a>
-                <a href="#" className="flex items-center bg-white drop-shadow-xl py-[0.5rem] px-[0.6rem] rounded-[0.5rem]">
-                    <img src={GiftcardImage} alt="Gift Cards" className="w-[0.7rem]"/>&nbsp;
-                    <p className="text-[#b4b4b4] font-semibold">Gift Cards</p>
-                </a>
-                <a href="#" className="flex text-[#b4b4b4] items-center bg-white drop-shadow-xl py-[0.5rem] px-[0.6rem] rounded-[0.5rem]">
-                    <img src={CardlessImage} alt="" className="w-[0.7rem]" />&nbsp;
-                    <p className="font-semibold">Cardless Payments</p>
-                </a>
-            </nav> 
-
+            <PayCom/>
+            <PayNavbar/>
             <div className="flex justify-center w-[40rem] h-[25rem] mx-auto bg-white drop-shadow-xl">
                 <div className="flex flex-col w-[30rem]">
                         <h2 className="py-5 text-[#010101] font-bold text-xl text-center">Send Money</h2>

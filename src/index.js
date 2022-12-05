@@ -6,10 +6,11 @@ import VerifyEmailOtp from "./components/Otp/VerifyEmailOtp"
 import VerifyPhoneOtp from "./components/Otp/VerifyPhoneOtp"
 import Dashboard from "./components/Dashboard/Dashboard"
 import SendMoney from "./components/PayFolder/Sendmoney"
+import BuyAirtime from "./components/PayFolder/Buyairtime"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-   <SendMoney />
+   <BuyAirtime />
   );
 
 
