@@ -5,10 +5,11 @@ import "./App.css"
 import VerifyEmailOtp from "./components/Otp/VerifyEmailOtp"
 import VerifyPhoneOtp from "./components/Otp/VerifyPhoneOtp"
 import Dashboard from "./components/Dashboard/Dashboard"
+import Referrals from "./components/Referrals/Referrals"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-   <Dashboard />
+   <Referrals />
   );
 
 
