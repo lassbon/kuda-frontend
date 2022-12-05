@@ -11,6 +11,10 @@ import Pay from "./components/pages/Pay/Sendmoney";
 import Register from "./components/pages/Register/Register";
 import Login from "./components/pages/Login/Login";
 import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
+import Dashboard from "./components/pages/Dashboard/Dashboard";
+import Invest from "./components/pages/Invest/Invest";
+import Budget from "./components/pages/Budget/Budget";
+
 
 const router = createBrowserRouter([
   {
@@ -31,6 +35,21 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/invest",
+    element: <Invest />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/budget",
+    element: <Budget />,
     errorElement:<PageNotFound />
   },
 ]);

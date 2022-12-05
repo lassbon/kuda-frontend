@@ -27,15 +27,21 @@ function Navbar() {
         </div>
         <div className='flex items-center'>
           <img src={invest} alt='invest' className='w-[1.5rem]' />
-          <p className='text-[#b2a2c4] mx-[1rem]'>Invest</p>
+          <p className='text-[#b2a2c4] mx-[1rem]'>
+            <a href='/invest'>Invest</a>
+          </p>
         </div>
         <div className='flex items-center'>
           <img src={budget} alt='budget' className='w-[1.5rem]' />
-          <p className='text-[#b2a2c4] mx-[1rem]'>Budget</p>
+          <p className='text-[#b2a2c4] mx-[1rem]'>
+            <a href='/budget'> Budget </a>
+          </p>
         </div>
         <div className='flex items-center'>
           <img src={card} alt='card' className='w-[1.5rem]' />
-          <p className='text-[#b2a2c4] mx-[1rem]'>Card</p>
+          <p className='text-[#b2a2c4] mx-[1rem]'>
+            <a href='/card'>Card </a>
+          </p>
         </div>
       </div>
       <div className='flex items-center'>

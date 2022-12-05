@@ -1,7 +1,24 @@
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import { BsFillEyeFill } from "react-icons/bs"
+import { useState } from "react"
 
 function Register() {
+  const [data, setData] = useState()
+  const [surname, setSurname] = useState("faruq")
+  const [othernames, setOthernames] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+
+  function clickme() {
+    if (surname === "faruq") {
+      setSurname("aaliyah")
+    }
+
+    alert(`I got clicked ${surname}`)
+  }
+
+  console.log(`here: ${surname}`)
   return (
     <main className='font-Mulish'>
       <nav className=' flex justify-between items-center px-[5rem] mt-5  shadow-white drop-shadow-2xl'>
@@ -16,7 +33,7 @@ function Register() {
         </button>
       </nav>
 
-      <body className='mx-[2rem] flex-col w-[32rem] '>
+      <div className='mx-[2rem] flex-col w-[32rem] '>
         <div className='flex justify-center my-5'>
           <p className=' bg-[#eff1ff] w-[28rem] p-2 text-[#40196d] text-xs rounded-lg'>
             Please check that you are visiting the correct URL{" "}
@@ -118,6 +135,7 @@ function Register() {
             </div>
 
             <button
+              onClick={clickme}
               type='submit'
               className='border border-[#40196d] bg-[#40196d] w-[10rem] mt-[2rem] hover:-translate-y-1 duration-700 p-2 rounded-lg text-white text-sm'
             >
@@ -134,7 +152,7 @@ function Register() {
             </p>
           </form>
         </div>
-      </body>
+      </div>
     </main>
   )
 }
