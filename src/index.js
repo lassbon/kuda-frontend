@@ -17,6 +17,7 @@ import Budget from "./components/pages/Budget/Budget";
 import Card from "./components/pages/Card/Card";
 import Account from "./components/pages/Account/AccountDashboard";
 import Referrals from "./components/pages/Referrals/Referrals";
+import Statement from "./components/pages/Statements/Statement";
 
 const router = createBrowserRouter([
   {
@@ -69,7 +70,11 @@ const router = createBrowserRouter([
     element: <Referrals />,
     errorElement:<PageNotFound />
   },
-
+  {
+    path: "/statements",
+    element: <Statement />,
+    errorElement:<PageNotFound />
+  },
   
 
 ]);
