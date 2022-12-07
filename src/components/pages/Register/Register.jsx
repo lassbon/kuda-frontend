@@ -1,11 +1,13 @@
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs"
 import { useState } from "react"
+import Bkground from "../../../img/Svg/Bkground.svg"
 
 function Register() {
   const [surname, setSurname] = useState("faruq")
   const [othernames, setOthernames] = useState("")
   const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
   const [password, setPassword] = useState(null)
   const [confirmPassword, setConfirmPassword] = useState("")
 
@@ -19,7 +21,14 @@ function Register() {
   function Register() {}
 
   return (
-    <main className='font-Mulish'>
+    <main
+      className='font-Mulish'
+      style={{
+        backgroundImage: `url(${Bkground})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "right",
+      }}
+    >
       <nav className=' flex justify-between items-center px-[5rem] mt-5  shadow-white drop-shadow-2xl'>
         <div className='hover:transition ease-in-out delay-50'>
           <img src={Kuda_Logo} className=' w-[5rem] ' alt='Kuda' />
@@ -32,7 +41,7 @@ function Register() {
         </button>
       </nav>
 
-      <div className='mx-[2rem] flex-col w-[32rem] '>
+      <div className='mx-[2rem] flex-col w-[60rem]'>
         <div className='flex justify-center my-5'>
           <p className=' bg-[#eff1ff] w-[28rem] p-2 text-[#40196d] text-xs rounded-lg'>
             Please check that you are visiting the correct URL{" "}
@@ -44,116 +53,154 @@ function Register() {
           </p>
         </div>
 
-        <div className='border p-5 w-[28rem] mx-auto drop-shadow-lg rounded-lg'>
+        <div className='p-5 w-[50rem] mx-auto drop-shadow-lg rounded-lg'>
           <h2 className='w-[25rem] text-2xl my-4 font-bold'>Sign Up to Kuda</h2>
           <p className='w-[25rem]'>
             To sign up, please type in the email address linked to your Kuda
             account
           </p>
 
-          <form className=' my-5'>
-            <label htmlFor='' className='mb-5 text-sm'>
-              Surname
-            </label>
-            <br />
-            <div className='w-[25rem]'>
-              <input
-                type='text'
-                id='Surname'
-                name='Surname'
-                className='rounded-lg w-[25rem] h-[3rem] my-3 p-2'
-                placeholder='Surname'
-                style={{ border: "none", outline: "none" }}
-                required
-              />
+          <form className='my-5  '>
+            <div className='flex justify-between'>
+              <div className=''>
+                <label htmlFor='' className='mb-5 text-sm'>
+                  Surname
+                </label>
+                <br />
+                <div className='w-[20rem]'>
+                  <input
+                    type='text'
+                    id='Surname'
+                    name='Surname'
+                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff]'
+                    placeholder='Surname'
+                    style={{ border: "none", outline: "none" }}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className=''>
+                <label htmlFor='' className='mb-5 text-sm'>
+                  Othernames
+                </label>
+                <br />
+                <div className='w-[20rem]'>
+                  <input
+                    type='text'
+                    id='Othernames'
+                    name='Othernames'
+                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff]'
+                    placeholder='Othernames'
+                    style={{ border: "none", outline: "none" }}
+                    required
+                  />
+                </div>
+              </div>
             </div>
 
-            <label htmlFor='' className='mb-5 text-sm'>
-              Othernames
-            </label>
-            <br />
-            <div className='w-[25rem]'>
-              <input
-                type='text'
-                id='Othernames'
-                name='Othernames'
-                className='rounded-lg w-[25rem] h-[3rem] my-3 p-2'
-                placeholder='Othernames'
-                style={{ border: "none", outline: "none" }}
-                required
-              />
+            <div className='flex justify-between '>
+              <div className=''>
+                <label htmlFor='' className='text-sm'>
+                  Email
+                </label>
+                <br />
+                <div className='w-[20rem]'>
+                  <input
+                    type='email'
+                    id='Email'
+                    name='Email'
+                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff]'
+                    placeholder='Abc@gmail.com'
+                    style={{ border: "none", outline: "none" }}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className=''>
+                <label htmlFor='' className='text-sm'>
+                  Phone-Number
+                </label>
+                <br />
+                <div className='w-[20rem]'>
+                  <input
+                    type='tel'
+                    id='tel'
+                    name='telephone'
+                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff]'
+                    placeholder='081********'
+                    style={{ border: "none", outline: "none" }}
+                    required
+                  />
+                </div>
+              </div>
             </div>
 
-            <label htmlFor='' className='text-sm'>
-              Email
-            </label>
-            <br />
-            <div className='w-[25rem]'>
-              <input
-                type='email'
-                id='Email'
-                name='Email'
-                className='rounded-lg w-[25rem] h-[3rem] my-3 p-2'
-                placeholder='Abc@gmail.com'
-                style={{ border: "none", outline: "none" }}
-                required
-              />
-            </div>
+            <div className='flex justify-between'>
+              <div className=''>
+                <label htmlFor='' className='text-sm'>
+                  Password
+                </label>
+                <div className='flex items-center my-3 w-[20rem] h-[3rem] justify-between bg-[#dfe3ff] rounded-lg'>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id='Password'
+                    name='Password'
+                    className='rounded-lg  w-[20rem] h-[3rem] p-2  bg-[#dfe3ff] '
+                    placeholder='********'
+                    style={{ border: "none", outline: "none" }}
+                    required
+                  />
 
-            <label htmlFor='' className='text-sm'>
-              Password
-            </label>
-            <div className='flex items-center my-3 w-[25rem] h-[3rem] justify-between bg-[#fff] rounded-lg'>
-              <input
-                type={showPassword ? "text" : "password"}
-                id='Password'
-                name='Password'
-                className='rounded-lg  w-[23rem] h-[3rem] p-2'
-                placeholder='********'
-                style={{ border: "none", outline: "none" }}
-                required
-              />
+                  {showPassword ? (
+                    <BsFillEyeSlashFill
+                      className='mr-5'
+                      onClick={showPasswordDetails}
+                    />
+                  ) : (
+                    <BsFillEyeFill
+                      className='mr-5'
+                      onClick={showPasswordDetails}
+                    />
+                  )}
+                </div>
+              </div>
 
-              {showPassword ? (
-                <BsFillEyeSlashFill
-                  className='mr-5'
-                  onClick={showPasswordDetails}
-                />
-              ) : (
-                <BsFillEyeFill className='mr-5' onClick={showPasswordDetails} />
-              )}
-            </div>
+              <div className=''>
+                <label htmlFor='' className='text-sm'>
+                  Repeat Password
+                </label>
+                <br />
+                <div className='flex items-center my-3 w-[20rem] h-[3rem] justify-between bg-[#dfe3ff] rounded-lg'>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id='Password'
+                    name='Password'
+                    className='rounded-lg  w-[20rem] h-[3rem] p-2  bg-[#dfe3ff] '
+                    placeholder='********'
+                    style={{ border: "none", outline: "none" }}
+                    required
+                  />
 
-            <label htmlFor='' className='text-sm'>
-              Repeat Password
-            </label>
-            <br />
-            <div className='flex items-center my-3 w-[25rem] h-[3rem] justify-between bg-[#fff] rounded-lg'>
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                id='RepeatPassword'
-                name='RepeatPassword'
-                className='rounded-lg w-[23rem] h-[3rem] p-2'
-                placeholder='********'
-                style={{ border: "none", outline: "none" }}
-                required
-              />
-              {showConfirmPassword ? (
-                <BsFillEyeSlashFill
-                  className='mr-5'
-                  onClick={showConfirmPasswordDetails}
-                />
-              ) : (
-                <BsFillEyeFill
-                  className='mr-5'
-                  onClick={showConfirmPasswordDetails}
-                />
-              )}
+                  {showPassword ? (
+                    <BsFillEyeSlashFill
+                      className='mr-5'
+                      onClick={showConfirmPasswordDetails}
+                    />
+                  ) : (
+                    <BsFillEyeFill
+                      className='mr-5'
+                      onClick={showConfirmPasswordDetails}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
 
             <button
               type='submit'
-              className='border border-[#40196d] bg-[#40196d] w-[10rem] mt-[2rem] hover:-translate-y-1 duration-700 p-2 rounded-lg text-white text-sm'
+              className='border border-[#40196d] bg-[#40196d] w-[20rem] mt-[2rem] hover:-translate-y-1 duration-700 p-2 rounded-lg text-white text-sm'
             >
               Register
             </button>
