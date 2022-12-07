@@ -35,7 +35,7 @@ function Register() {
         </button>
       </nav>
 
-      <div className='border mx-[2rem] flex-col w-[60rem]'>
+      <div className='mx-[2rem] flex-col w-[60rem]'>
         <div className='flex justify-center my-5'>
           <p className=' bg-[#eff1ff] w-[28rem] p-2 text-[#40196d] text-xs rounded-lg'>
             Please check that you are visiting the correct URL{" "}
