@@ -1,14 +1,15 @@
+import axios from "axios"
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs"
 import { useState } from "react"
 import Bkground from "../../../img/Svg/Bkground.svg"
 
 function Register() {
-  const [surname, setSurname] = useState("faruq")
+  const [surname, setSurname] = useState("")
   const [othernames, setOthernames] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
-  const [password, setPassword] = useState(null)
+  const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
   const [showPassword, setShowPassword] = useState(false)
@@ -18,7 +19,47 @@ function Register() {
   const showConfirmPasswordDetails = () =>
     setConfirmShowPassword(!showConfirmPassword)
 
-  function Register() {}
+  async function submitRegisterForm(e) {
+    try {
+      e.preventDefault() //prevent the page from reload
+      //validation
+      if (
+        !surname ||
+        !othernames ||
+        !email ||
+        !phone ||
+        !password ||
+        !confirmPassword
+      ) {
+        return
+      }
+
+      //pick the vlues and hit the backend
+
+      const registerApiCallResponse = await axios({
+        method: "post",
+        url: `http://localhost:8801/register`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          surname: surname,
+          othernames: othernames,
+          email: email,
+          phone: phone,
+          password: password,
+          repeat_password: confirmPassword,
+        },
+      })
+
+      if (registerApiCallResponse.data.status === true) {
+        alert(registerApiCallResponse.data.message)
+      } else {
+      }
+    } catch (err) {
+      alert(err.message)
+    }
+  }
 
   return (
     <main
@@ -60,7 +101,7 @@ function Register() {
             account
           </p>
 
-          <form className='my-5  '>
+          <form onSubmit={submitRegisterForm} className='my-5'>
             <div className='flex justify-between'>
               <div className=''>
                 <label htmlFor='' className='mb-5 text-sm'>
@@ -76,6 +117,7 @@ function Register() {
                     placeholder='Surname'
                     style={{ border: "none", outline: "none" }}
                     required
+                    onChange={(e) => setSurname(e.target.value)}
                   />
                 </div>
               </div>
@@ -94,6 +136,7 @@ function Register() {
                     placeholder='Othernames'
                     style={{ border: "none", outline: "none" }}
                     required
+                    onChange={(e) => setOthernames(e.target.value)}
                   />
                 </div>
               </div>
@@ -114,6 +157,7 @@ function Register() {
                     placeholder='Abc@gmail.com'
                     style={{ border: "none", outline: "none" }}
                     required
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
@@ -132,6 +176,7 @@ function Register() {
                     placeholder='081********'
                     style={{ border: "none", outline: "none" }}
                     required
+                    onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
               </div>
@@ -151,6 +196,7 @@ function Register() {
                     placeholder='********'
                     style={{ border: "none", outline: "none" }}
                     required
+                    onChange={(e) => setPassword(e.target.value)}
                   />
 
                   {showPassword ? (
@@ -181,6 +227,7 @@ function Register() {
                     placeholder='********'
                     style={{ border: "none", outline: "none" }}
                     required
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
 
                   {showPassword ? (
