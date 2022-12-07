@@ -20,7 +20,7 @@ function Sendmoney() {
               Send Money
             </h2>
             <a
-              href='#'
+              href='/Beneficiary'
               className='flex justify-center bg-white py-5 drop-shadow-lg'
             >
               <img src={KudaImage} alt='Kuda K image' className='w-[2.5rem]' />
@@ -35,8 +35,9 @@ function Sendmoney() {
               <img src={GreaterThan} alt='' className='w-[0.7rem] ml-[10rem]' />
             </a>
             <br />
+            
             <a
-              href='#'
+              href=''
               className='flex justify-center py-4 bg-white drop-shadow-lg'
             >
               <img
@@ -59,8 +60,8 @@ function Sendmoney() {
               />
             </a>
             <br />
-            <a
-              href='#'
+
+            <a href="/beneficiary"
               className='flex justify-center py-3 bg-white drop-shadow-lg'
             >
               <img
@@ -68,7 +69,8 @@ function Sendmoney() {
                 alt='Beneficiaries image'
                 className='w-[2.5rem]'
               />
-              <div>
+              
+                <div className="border-8">
                 <p className='text-[#411a6e] font-bold text-[1rem]'>
                   Beneficiaries{" "}
                   <span className='bg-[#49d38a] text-white'>New!</span>

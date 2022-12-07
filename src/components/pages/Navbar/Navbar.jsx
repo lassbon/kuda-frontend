@@ -53,6 +53,12 @@ function Navbar() {
         <div className='flex items-center'>
           <img src={card} alt='card' className='w-[1.5rem]' />
           <p className='text-[#b2a2c4] mx-[1rem]'>
+            <a href='/beneficiary'>Beneficiary </a>
+          </p>
+        </div>
+        <div className='flex items-center'>
+          <img src={card} alt='card' className='w-[1.5rem]' />
+          <p className='text-[#b2a2c4] mx-[1rem]'>
             <a href='/referrals'>Referrals </a>
           </p>
         </div>
