@@ -1,24 +1,23 @@
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
-import { BsFillEyeFill } from "react-icons/bs"
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs"
 import { useState } from "react"
 
 function Register() {
-  const [data, setData] = useState()
   const [surname, setSurname] = useState("faruq")
   const [othernames, setOthernames] = useState("")
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [password, setPassword] = useState(null)
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  function clickme() {
-    if (surname === "faruq") {
-      setSurname("aaliyah")
-    }
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setConfirmShowPassword] = useState(false)
 
-    alert(`I got clicked ${surname}`)
-  }
+  const showPasswordDetails = () => setShowPassword(!showPassword)
+  const showConfirmPasswordDetails = () =>
+    setConfirmShowPassword(!showConfirmPassword)
 
-  console.log(`here: ${surname}`)
+  function Register() {}
+
   return (
     <main className='font-Mulish'>
       <nav className=' flex justify-between items-center px-[5rem] mt-5  shadow-white drop-shadow-2xl'>
@@ -106,7 +105,7 @@ function Register() {
             </label>
             <div className='flex items-center my-3 w-[25rem] h-[3rem] justify-between bg-[#fff] rounded-lg'>
               <input
-                type='password'
+                type={showPassword ? "text" : "password"}
                 id='Password'
                 name='Password'
                 className='rounded-lg  w-[23rem] h-[3rem] p-2'
@@ -114,7 +113,15 @@ function Register() {
                 style={{ border: "none", outline: "none" }}
                 required
               />
-              <BsFillEyeFill className='mr-5' />
+
+              {showPassword ? (
+                <BsFillEyeSlashFill
+                  className='mr-5'
+                  onClick={showPasswordDetails}
+                />
+              ) : (
+                <BsFillEyeFill className='mr-5' onClick={showPasswordDetails} />
+              )}
             </div>
 
             <label htmlFor='' className='text-sm'>
@@ -123,7 +130,7 @@ function Register() {
             <br />
             <div className='flex items-center my-3 w-[25rem] h-[3rem] justify-between bg-[#fff] rounded-lg'>
               <input
-                type='password'
+                type={showConfirmPassword ? "text" : "password"}
                 id='RepeatPassword'
                 name='RepeatPassword'
                 className='rounded-lg w-[23rem] h-[3rem] p-2'
@@ -131,11 +138,20 @@ function Register() {
                 style={{ border: "none", outline: "none" }}
                 required
               />
-              <BsFillEyeFill className='mr-5' />
+              {showConfirmPassword ? (
+                <BsFillEyeSlashFill
+                  className='mr-5'
+                  onClick={showConfirmPasswordDetails}
+                />
+              ) : (
+                <BsFillEyeFill
+                  className='mr-5'
+                  onClick={showConfirmPasswordDetails}
+                />
+              )}
             </div>
 
             <button
-              onClick={clickme}
               type='submit'
               className='border border-[#40196d] bg-[#40196d] w-[10rem] mt-[2rem] hover:-translate-y-1 duration-700 p-2 rounded-lg text-white text-sm'
             >
