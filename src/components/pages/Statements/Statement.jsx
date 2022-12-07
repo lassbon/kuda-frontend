@@ -25,7 +25,7 @@ function Statement() {
         </div>
       </>
       <main className='w-[30%] mx-auto mt-[2rem] shadow-2xl'>
-        <div className='flex flex-col justify-center border rounded drop-shadow-2xl'>
+        <div className='flex flex-col justify-center border rounded'>
           <div className='flex items-center mx-[1rem] mt-[1rem] w-[10vh]'>
             <img
               src={Backarrow}
@@ -72,10 +72,17 @@ function Statement() {
                 <label htmlFor='filetype' className='text-sm'>
                   File Type
                 </label>
-                <select id="filetype">
-                  <option value="volvo">PDF</option>
-                  <option value="saab">Excel</option>
-                </select>
+                <br />
+                <div className='flex gap-x-8 justify-between'>
+                  <div className="border w-[9rem] h-[2.4rem] my-2 p-2 mx-auto drop-shadow-md">
+                    <input type="radio" id="html" name="fav_language" value="HTML" />
+                    <label htmlFor="html" className="p-4 mx-auto">PDF</label>
+                  </div>
+                  <div className="border w-[9rem] h-[2.4rem] my-2 p-2 mx-auto drop-shadow-md">
+                    <input type="radio" id="css" name="fav_language" value="CSS" />
+                    <label htmlFor="css" className="p-4 mx-auto">Excel</label>
+                  </div>
+                </div>
               </div>
               <button
                 type='submit'
