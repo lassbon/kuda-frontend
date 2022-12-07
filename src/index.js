@@ -18,6 +18,7 @@ import Card from "./components/pages/Card/Card";
 import Account from "./components/pages/Account/AccountDashboard";
 import Referrals from "./components/pages/Referrals/Referrals";
 import Statement from "./components/pages/Statements/Statement";
+import Report from "./components/pages/Statements/Report";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
     element: <Statement />,
     errorElement:<PageNotFound />
   },
+  {
+    path: "/reports",
+    element: <Report />,
+    errorElement:<PageNotFound />
+  }
   
 
 ]);
