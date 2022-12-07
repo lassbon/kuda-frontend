@@ -17,6 +17,7 @@ import Budget from "./components/pages/Budget/Budget";
 import Card from "./components/pages/Card/Card";
 import Account from "./components/pages/Account/AccountDashboard";
 import Referrals from "./components/pages/Referrals/Referrals";
+import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/UpdateTransPin";
 
 // const router = createBrowserRouter([
 //   {
