@@ -38,12 +38,16 @@ function HomePage() {
             <button className='mx-3 text-[0.9rem] text-[#745895]'>Help</button>
           </div>
           <div className='flex p-[1rem] items-center'>
-            <button className='mx-3 text-[0.9rem] text-[#745895]'>
-              Sign In
-            </button>
-            <button className='mx-3 bg-[#40196d] rounded-[0.7rem] text-white font-bold py-2 px-7 translate-y-1 duration-120ms'>
-              Get Kuda
-            </button>
+            <a href='/login'>
+              <button className='mx-3 text-[0.9rem] text-[#745895]'>
+                Sign In
+              </button>
+            </a>
+            <a href='/register'>
+              <button className='mx-3 bg-[#40196d] rounded-[0.7rem] text-white font-bold py-2 px-7 translate-y-1 duration-120ms'>
+                Get Kuda
+              </button>
+            </a>
             <div className='border'>
               <img src={logo2} alt='logo 2' />
             </div>
