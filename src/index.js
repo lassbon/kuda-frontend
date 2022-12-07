@@ -17,69 +17,73 @@ import Budget from "./components/pages/Budget/Budget";
 import Card from "./components/pages/Card/Card";
 import Account from "./components/pages/Account/AccountDashboard";
 import Referrals from "./components/pages/Referrals/Referrals";
-import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/UpdateTransPin";
+import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/UpdateTransactionPin";
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <HomePage />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/send-money",
-//     element: <Pay />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/register",
-//     element: <Register />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/login",
-//     element: <Login />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/dashboard",
-//     element: <Dashboard />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/invest",
-//     element: <Invest />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/budget",
-//     element: <Budget />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/card",
-//     element: <Card />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/account",
-//     element: <Account />,
-//     errorElement:<PageNotFound />
-//   },
-//   {
-//     path: "/referrals",
-//     element: <Referrals />,
-//     errorElement:<PageNotFound />
-//   },
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/send-money",
+    element: <Pay />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/register",
+    element: <Register />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/invest",
+    element: <Invest />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/budget",
+    element: <Budget />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/card",
+    element: <Card />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/account",
+    element: <Account />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/referrals",
+    element: <Referrals />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path: "/update-pin",
+    element: <UpdateTransactionPin />,
+    errorElement:<PageNotFound />
+  },
 
   
 
-// ]);
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    {/* <RouterProvider router={router} /> */}
-    <Register/>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
