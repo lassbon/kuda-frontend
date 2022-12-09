@@ -1,8 +1,12 @@
 import Navbar from "../Navbar/Navbar"
 import nigFlag from "../../../img/nig_flag.png"
 import Backarrow from "../../../img/Svg/Backarrow.svg"
+import reportChart from "../../../img/Svg/ReportChart.svg"
+import { useState } from "react"
 
 function Statement() {
+  const [isOpen, setIsOpen] = useState(true)
+
   return (
     <>
       <Navbar />
@@ -12,20 +16,21 @@ function Statement() {
           <img src={nigFlag} alt='Nig flag' className='w-[1rem]' />
         </div>
         <div className='flex justify-center items-center mt-[1.5rem]'>
-          <a href='#'>
-            <button className='border border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] text-[#7d629a] font-small'>
-              Statements
-            </button>
-          </a>
-          <a href='#'>
-            <button className='border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] bg-[#f9f9f9] text-[#7d629a] font-small'>
-              Reports
-            </button>
-          </a>
+          <button 
+            type="button"
+            className={isOpen ? 'border border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] text-[#7d629a] font-small'
+            : 'border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] bg-[#f9f9f9] text-[#7d629a] font-small'}
+            onClick={() => setIsOpen(isOpen = true)}>Statements</button>
+          <button
+            type="button"
+            className={isOpen ? 'border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] bg-[#f9f9f9] text-[#7d629a] font-small'
+            : 'border border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] text-[#7d629a] font-small' }
+            onClick={() => setIsOpen(isOpen = false)}>Reports</button>
         </div>
       </>
       <main className='w-[30%] mx-auto mt-[2rem] shadow-2xl'>
-        <div className='flex flex-col justify-center border rounded'>
+      {isOpen ?  
+        <div className='flex flex-col justify-center border rounded drop-shadow-2xl'>
           <div className='flex items-center mx-[1rem] mt-[1rem] w-[10vh]'>
             <img
               src={Backarrow}
@@ -93,6 +98,25 @@ function Statement() {
             </form>
           </div>
         </div>
+        :
+        <div className='flex flex-col justify-center border rounded drop-shadow-2xl'>
+          <div className='flex flex-col items-center mx-[1rem] mt-[1rem]'>
+            <h2 className='py-1 text-[#010101] font-bold text-xl text-center'>
+              Spending Reports
+            </h2>
+            <div className="px-[2rem] p-[1rem]">
+              <img src={reportChart} alt='addMoney' className='w-[3rem]' />
+            </div>
+            <p className='text-sm py-1 text-[#010101] font-bold text-center'>
+              Spending Reports are coming soon
+            </p>
+            <p className='text-sm text-[#B6B6B4] text-center'>
+              We'll let you know when they're ready
+            </p>
+            <br /><br /><br />
+          </div>
+        </div>
+      }
       </main>
     </>
   )
