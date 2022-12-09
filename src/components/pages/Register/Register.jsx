@@ -3,8 +3,13 @@ import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs"
 import { useState } from "react"
 import Bkground from "../../../img/Svg/Bkground.svg"
-
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { useNavigate } from "react-router-dom"
+import BigProcessingButton from "../../shared-components/Button/BigProcessingButton"
 function Register() {
+  const redirect = useNavigate()
+
   const [surname, setSurname] = useState("")
   const [othernames, setOthernames] = useState("")
   const [email, setEmail] = useState("")
@@ -14,14 +19,19 @@ function Register() {
 
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setConfirmShowPassword] = useState(false)
+  const [isSubmitting, setIsSubmmitting] = useState(0) //0=not submitted, 1=submitting, 2 for submmitted
+  const [disabledOption, setDisabledOption] = useState(true)
 
   const showPasswordDetails = () => setShowPassword(!showPassword)
-  const showConfirmPasswordDetails = () =>
+
+  const showConfirmPasswordDetails = () => {
     setConfirmShowPassword(!showConfirmPassword)
+  }
 
   async function submitRegisterForm(e) {
     try {
       e.preventDefault() //prevent the page from reload
+
       //validation
       if (
         !surname ||
@@ -29,13 +39,15 @@ function Register() {
         !email ||
         !phone ||
         !password ||
-        !confirmPassword
+        !confirmPassword ||
+        password !== confirmPassword
       ) {
-        return
+        throw new Error("All the fields are compulsory")
       }
 
       //pick the vlues and hit the backend
-
+      setIsSubmmitting(1)
+      setDisabledOption(true)
       const registerApiCallResponse = await axios({
         method: "post",
         url: `http://localhost:8801/register`,
@@ -52,12 +64,16 @@ function Register() {
         },
       })
 
+      setIsSubmmitting(2)
       if (registerApiCallResponse.data.status === true) {
-        alert(registerApiCallResponse.data.message)
+        //route to VerifyEmailOtp screen
+        localStorage.setItem("userData", { email: email, phone: phone })
+        redirect("/register/verify-otp")
       } else {
+        alert(registerApiCallResponse.data.error.message)
       }
     } catch (err) {
-      alert(err.message)
+      alert(err)
     }
   }
 
@@ -141,7 +157,6 @@ function Register() {
                 </div>
               </div>
             </div>
-
             <div className='flex justify-between '>
               <div className=''>
                 <label htmlFor='' className='text-sm'>
@@ -181,7 +196,6 @@ function Register() {
                 </div>
               </div>
             </div>
-
             <div className='flex justify-between'>
               <div className=''>
                 <label htmlFor='' className='text-sm'>
@@ -220,9 +234,9 @@ function Register() {
                 <br />
                 <div className='flex items-center my-3 w-[20rem] h-[3rem] justify-between bg-[#dfe3ff] rounded-lg'>
                   <input
-                    type={showPassword ? "text" : "password"}
-                    id='Password'
-                    name='Password'
+                    type={showConfirmPassword ? "text" : "password"}
+                    id='ResetPassword'
+                    name='ResetPassword'
                     className='rounded-lg  w-[20rem] h-[3rem] p-2  bg-[#dfe3ff] '
                     placeholder='********'
                     style={{ border: "none", outline: "none" }}
@@ -230,7 +244,7 @@ function Register() {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
 
-                  {showPassword ? (
+                  {showConfirmPassword ? (
                     <BsFillEyeSlashFill
                       className='mr-5'
                       onClick={showConfirmPasswordDetails}
@@ -244,13 +258,14 @@ function Register() {
                 </div>
               </div>
             </div>
-
-            <button
-              type='submit'
-              className='border border-[#40196d] bg-[#40196d] w-[20rem] mt-[2rem] hover:-translate-y-1 duration-700 p-2 rounded-lg text-white text-sm'
-            >
-              Register
-            </button>
+            <br />
+            <input type='checkbox' /> I agree with the terms and condition{" "}
+            <br />
+            <BigProcessingButton
+              isSubmitting={isSubmitting}
+              text='Register'
+              disabled={disabledOption}
+            />
             <p className='py-3'>
               Click{" "}
               <b>

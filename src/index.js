@@ -6,6 +6,8 @@ import {
   Route,
 } from "react-router-dom";
 import "./App.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from "./components/pages/HomePage/HomePage";
 import Pay from "./components/pages/Pay/Sendmoney";
 import Register from "./components/pages/Register/Register";
@@ -18,6 +20,7 @@ import Card from "./components/pages/Card/Card";
 import Account from "./components/pages/Account/AccountDashboard";
 import Referrals from "./components/pages/Referrals/Referrals";
 import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/UpdateTransactionPin";
+import VerifyEmailOtp from "./components/pages/Otp/VerifyEmailOtp";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +78,11 @@ const router = createBrowserRouter([
     element: <UpdateTransactionPin />,
     errorElement:<PageNotFound />
   },
+  {
+    path: "/register/verify-otp",
+    element: <VerifyEmailOtp />,
+    errorElement:<PageNotFound />
+  }
 
   
 
@@ -83,6 +91,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
+     <ToastContainer />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
