@@ -5,7 +5,7 @@ import reportChart from "../../../img/Svg/ReportChart.svg"
 import { useState } from "react"
 
 function Statement() {
-  const [isOpen, setIsOpen] = useState(true)
+  let [isOpen, setIsOpen] = useState(true)
 
   return (
     <>
