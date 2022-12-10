@@ -21,6 +21,7 @@ import Account from "./components/pages/Account/AccountDashboard";
 import Referrals from "./components/pages/Referrals/Referrals";
 import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/UpdateTransactionPin";
 import VerifyEmailOtp from "./components/pages/Otp/VerifyEmailOtp";
+import VerifyPhoneOtp from "./components/pages/Otp/VerifyPhoneOtp";
 
 const router = createBrowserRouter([
   {
@@ -82,7 +83,14 @@ const router = createBrowserRouter([
     path: "/register/verify-otp",
     element: <VerifyEmailOtp />,
     errorElement:<PageNotFound />
+  },
+
+  {
+    path: "/register/verify-phone-otp",
+    element: <VerifyPhoneOtp />,
+    errorElement:<PageNotFound />
   }
+
 
   
 
@@ -91,8 +99,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-     <ToastContainer />
     <RouterProvider router={router} />
+    <ToastContainer />
   </React.StrictMode>
 );
 

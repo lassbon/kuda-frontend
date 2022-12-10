@@ -1,5 +1,6 @@
-import React, { Component } from "react"
-import SweetAlert from "sweetalert-react"
+import React from "react"
+import SweetAlert from "sweetalert-react" // eslint-disable-line import/no-extraneous-dependencies
+import "sweetalert/dist/sweetalert.css"
 
 function Alert({ message, type }) {
   //type =0 or 1, => 0=error and 1=success

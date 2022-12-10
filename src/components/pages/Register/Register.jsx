@@ -1,12 +1,14 @@
 import axios from "axios"
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Bkground from "../../../img/Svg/Bkground.svg"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { useNavigate } from "react-router-dom"
 import BigProcessingButton from "../../shared-components/Button/BigProcessingButton"
+import SAlert from "../../shared-components/Alert/SweetAlert"
+
 function Register() {
   const redirect = useNavigate()
 
@@ -20,7 +22,7 @@ function Register() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setConfirmShowPassword] = useState(false)
   const [isSubmitting, setIsSubmmitting] = useState(0) //0=not submitted, 1=submitting, 2 for submmitted
-  const [disabledOption, setDisabledOption] = useState(true)
+  const [disabledOption, setDisabledOption] = useState(false)
 
   const showPasswordDetails = () => setShowPassword(!showPassword)
 
@@ -67,13 +69,18 @@ function Register() {
       setIsSubmmitting(2)
       if (registerApiCallResponse.data.status === true) {
         //route to VerifyEmailOtp screen
-        localStorage.setItem("userData", { email: email, phone: phone })
+        const objToSave = {
+          email: email,
+          phone: phone,
+        }
+        localStorage.setItem("userData", JSON.stringify(objToSave))
         redirect("/register/verify-otp")
       } else {
         alert(registerApiCallResponse.data.error.message)
       }
     } catch (err) {
-      alert(err)
+      setIsSubmmitting(0)
+      alert(err.message)
     }
   }
 

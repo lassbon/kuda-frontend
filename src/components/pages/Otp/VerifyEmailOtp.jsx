@@ -4,11 +4,14 @@ import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import Phone from "../../../img/Svg/Phone.svg"
 import BigProcessingButton from "../../shared-components/Button/BigProcessingButton"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 function VerifyEmailOtp() {
+  const navigate = useNavigate()
   // const style =
   const [emailOtp, setEmailOtp] = useState("")
-  const [disabledOption, setDisabledOption] = useState(true)
+  const [disabledOption, setDisabledOption] = useState(false)
+  const [isSubmitting, setIsSubmmitting] = useState(0)
 
   const handleEmailChange = (enteredOtp) => {
     if (enteredOtp.length === 6) {
@@ -19,8 +22,9 @@ function VerifyEmailOtp() {
   }
 
   async function onEmailOtpVerifyBtnClick() {
+    setIsSubmmitting(1)
     try {
-      const { email, phone } = localStorage.getItem("userData")
+      const { email, phone } = JSON.parse(localStorage.getItem("userData"))
 
       if (emailOtp.length < 6) {
         throw new Error("Invalid otp")
@@ -34,12 +38,18 @@ function VerifyEmailOtp() {
         },
       })
 
-      if (getEmailOtpResponseApiCall.data.status === true) {
-        //navigte to phobe verify otp screen
+      setIsSubmmitting(0)
+
+      if (getEmailOtpResponseApiCall.data.response.data.status === true) {
+        //navigte to phone verify otp screen
+        console.log(`navigate to phone verify otp screen`)
+        navigate("/register/verify-phone-otp")
+      } else {
+        alert(getEmailOtpResponseApiCall.data.response.data.message)
       }
-      alert(getEmailOtpResponseApiCall.data.message)
     } catch (error) {
-      alert(error.message)
+      setIsSubmmitting(0)
+      alert(error.response.data.message)
     }
   }
 
@@ -115,6 +125,7 @@ function VerifyEmailOtp() {
             text='Verify Otp'
             onClick={onEmailOtpVerifyBtnClick}
             disabled={disabledOption}
+            isSubmitting={isSubmitting}
           />
           {/* <button
             type='submit'
