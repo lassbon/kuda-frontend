@@ -20,12 +20,12 @@ function Statement() {
             type="button"
             className={isOpen ? 'border border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] text-[#7d629a] font-small'
             : 'border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] bg-[#f9f9f9] text-[#7d629a] font-small'}
-            onClick={() => setIsOpen(isOpen = true)}>Statements</button>
+            onClick={() => setIsOpen(true)}>Statements</button>
           <button
             type="button"
             className={isOpen ? 'border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] bg-[#f9f9f9] text-[#7d629a] font-small'
             : 'border border-top-bottom-left[#d8d1e1] w-[18rem] px-[1.5rem] h-[2.3rem] text-[#7d629a] font-small' }
-            onClick={() => setIsOpen(isOpen = false)}>Reports</button>
+            onClick={() => setIsOpen(false)}>Reports</button>
         </div>
       </>
       <main className='w-[30%] mx-auto mt-[2rem] shadow-2xl'>
