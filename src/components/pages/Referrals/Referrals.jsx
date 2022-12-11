@@ -1,4 +1,5 @@
 import React from "react"
+import { useState } from "react"
 import nigFlag from "../../../img/nig_flag.png"
 import Navbar from "../Navbar/Navbar"
 import Backarrow from "../../../img/Svg/Backarrow.svg"
@@ -9,6 +10,11 @@ import twittericon from "../../../img/Svg/twittericon.svg"
 import persons from "../../../img/Svg/persons.svg"
 import gift from "../../../img/Svg/gGiftbag.svg"
 function Referrals() {
+
+  
+
+
+
   return (
     <div className='font-Mulish'>
       <Navbar />
@@ -21,11 +27,13 @@ function Referrals() {
           <div className=' border  shadow-xl '>
             <div className='flex flex-col px-5  py-5'>
               <div className='flex items-center mx-[1rem] w-[10vh]'>
-                <img
-                  src={Backarrow}
-                  alt='backarrow'
-                  className='w-[1rem] h-[1rem]'
-                ></img>
+                  <a href="/account">
+                    <img
+                      src={Backarrow}
+                      alt='backarrow'
+                      className='w-[1rem] h-[1rem]'
+                    ></img>
+                  </a>
                 <p className=' flex items-center   text-[#40196d]'>Back</p>
               </div>
               <div className='mx-[2rem] mt-[1rem]'>
@@ -94,7 +102,7 @@ function Referrals() {
                 </div>
               </div>
 
-              <button className=' flex justify-center mx-[2rem] my-[2rem] bg-[#411a6e] text-[#ffffff] p-[0.5rem] rounded-lg'>
+              <button type="submit" className=' flex justify-center mx-[2rem] my-[2rem] bg-[#411a6e] text-[#ffffff] p-[0.5rem] rounded-lg'>
                 {" "}
                 Share Referral Code
               </button>
