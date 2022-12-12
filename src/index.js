@@ -90,6 +90,11 @@ const router = createBrowserRouter(
     path: "/register/verify-phone-otp",
     element: <VerifyPhoneOtp />,
     errorElement:<PageNotFound />
+  },
+  {
+    path: "/register/resend-phone-otp",
+    element: <ResendPhoneOtp />,
+    errorElement:<PageNotFound />
   }
 
 
