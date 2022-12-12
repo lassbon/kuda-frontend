@@ -1,8 +1,60 @@
+import { useState } from "react"
 import OtpInput from "react18-otp-input"
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import Phone from "../../../img/Svg/Phone.svg"
+import BigProcessingButton from "../../shared-components/Button/BigProcessingButton"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
-function VerifyPhoneOtp() {
+function ResendPhoneOtp() {
+    const navigate = useNavigate()
+
+    const [resentPhoneOtp, setResentPhoneOtp] = useState("")
+    const [disabledOption, setDisabledOption] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(0)
+
+    const phoneOtpChange = (newPhoneOtp) => {
+        if (newPhoneOtp.length === 6){
+            setDisabledOption(false)
+        }
+        setResentPhoneOtp(newOtp)
+    }
+
+    async function newOtpVerifyBtnClick(){
+        setIsSubmitting(1)
+        try{
+            const { phone } = JSON.parse(localStorage.getItem("userData"))
+
+            if (newPhoneOtp.length < 6) {
+                throw new Error("Invalid otp")
+            }
+
+            const getResentPhoneOtpResponseApiCall = await axios({
+                method: "get",
+                url: `http://localhost:8801//resend-phone-otp/${phone}`,
+                headers: {
+                  "Content-Type": "application/json",
+                },
+            })
+
+            setIsSubmitting(0)
+
+            if (getResentPhoneOtpResponseApiCall.data.response.data.status === true) {
+              //navigte to login screen
+            //   console.log(`login screen`)
+              navigate("/login")
+            } else {
+              alert(getResentPhoneOtpResponseApiCall.data.response.data.message)
+              }
+        } catch (error) {
+              setIsSubmitting(0)
+              alert(error.response.data.message)
+        }
+        
+    }
+
+    
+
   return (
     <main className='font-Mulish'>
       <nav className=' flex justify-between items-center px-[5rem] mt-5  shadow-white drop-shadow-2xl'>
@@ -49,7 +101,9 @@ function VerifyPhoneOtp() {
           <OtpInput
             placeholder={"------"}
             numInputs={6}
+            value={resentPhoneOtp}
             separator={<span>&nbsp; &nbsp;</span>}
+            onChange={phoneOtpChange}
             inputStyle={{
               fontFamily: "Mulish",
               margin: "4px",
@@ -68,16 +122,15 @@ function VerifyPhoneOtp() {
           <p className='text-[#49d38a] text-xs font-bold my-5'>
             <a href='/register/resend-phone-otp'>Resend Code</a>
           </p>
-
-          <button
-            type='submit'
-            className='border border-[#40196d] bg-[#40196d] w-[10rem] mt-[2rem] hover:-translate-y-1 duration-700 p-2 rounded-lg text-white text-sm '
-          >
-            Verify
-          </button>
+          <BigProcessingButton
+            text='Verify'
+            onClick={newOtpVerifyBtnClick}
+            disabled={disabledOption}
+            isSubmitting={isSubmitting}
+          />
         </div>
       </body>
     </main>
   )
 }
-export default VerifyPhoneOtp
+export default ResendPhoneOtp
