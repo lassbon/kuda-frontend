@@ -23,7 +23,8 @@ import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/Update
 import VerifyEmailOtp from "./components/pages/Otp/VerifyEmailOtp";
 import VerifyPhoneOtp from "./components/pages/Otp/VerifyPhoneOtp";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
   {
     path: "/",
     element: <HomePage />,
@@ -94,13 +95,15 @@ const router = createBrowserRouter([
 
   
 
-]);
+  ]
+ 
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
     <ToastContainer />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

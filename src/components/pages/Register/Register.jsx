@@ -3,11 +3,12 @@ import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs"
 import { useState, useEffect } from "react"
 import Bkground from "../../../img/Svg/Bkground.svg"
-import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { useNavigate } from "react-router-dom"
 import BigProcessingButton from "../../shared-components/Button/BigProcessingButton"
-import SAlert from "../../shared-components/Alert/SweetAlert"
+import { Toast } from "../../shared-components/Toast/Toast"
+import { RegisterEndpoint } from "../../../api/url/url"
+import { Post } from "../../../api/httpMethods/httpMethods"
 
 function Register() {
   const redirect = useNavigate()
@@ -46,25 +47,20 @@ function Register() {
       ) {
         throw new Error("All the fields are compulsory")
       }
+      const body = {
+        surname: surname,
+        othernames: othernames,
+        email: email,
+        phone: phone,
+        password: password,
+        repeat_password: confirmPassword,
+      }
 
       //pick the vlues and hit the backend
       setIsSubmmitting(1)
       setDisabledOption(true)
-      const registerApiCallResponse = await axios({
-        method: "post",
-        url: `http://localhost:8801/register`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {
-          surname: surname,
-          othernames: othernames,
-          email: email,
-          phone: phone,
-          password: password,
-          repeat_password: confirmPassword,
-        },
-      })
+
+      const registerApiCallResponse = await Post(RegisterEndpoint, body)
 
       setIsSubmmitting(2)
       if (registerApiCallResponse.data.status === true) {
@@ -76,11 +72,12 @@ function Register() {
         localStorage.setItem("userData", JSON.stringify(objToSave))
         redirect("/register/verify-otp")
       } else {
-        alert(registerApiCallResponse.data.error.message)
+        Toast("error", registerApiCallResponse.data.error.message)
       }
     } catch (err) {
       setIsSubmmitting(0)
-      alert(err.message)
+      setDisabledOption(false)
+      Toast("error", err.message)
     }
   }
 

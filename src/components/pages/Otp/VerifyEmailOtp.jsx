@@ -1,13 +1,17 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import OtpInput from "react18-otp-input"
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import Phone from "../../../img/Svg/Phone.svg"
 import BigProcessingButton from "../../shared-components/Button/BigProcessingButton"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Toast } from "../../shared-components/Toast/Toast"
+import { Get } from "../../../api/httpMethods/httpMethods"
+import { VerifyEmailOtpEndpoint } from "../../../api/url/url"
 
 function VerifyEmailOtp() {
   const navigate = useNavigate()
+
   // const style =
   const [emailOtp, setEmailOtp] = useState("")
   const [disabledOption, setDisabledOption] = useState(false)
@@ -30,26 +34,25 @@ function VerifyEmailOtp() {
         throw new Error("Invalid otp")
       }
 
-      const getEmailOtpResponseApiCall = await axios({
-        method: "get",
-        url: `http://localhost:8801/verify-email-otp/${emailOtp}/${email}/${phone}`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      const getEmailOtpResponseApiCall = await Get(
+        `${VerifyEmailOtpEndpoint}/${emailOtp}/${email}/${phone}`
+      )
 
       setIsSubmmitting(0)
 
-      if (getEmailOtpResponseApiCall.data.response.data.status === true) {
+      if (getEmailOtpResponseApiCall.data.status === true) {
         //navigte to phone verify otp screen
-        console.log(`navigate to phone verify otp screen`)
-        navigate("/register/verify-phone-otp")
+        Toast("success", getEmailOtpResponseApiCall.data.message)
+        setTimeout(() => {
+          navigate("/register/verify-phone-otp")
+        }, 1000)
       } else {
-        alert(getEmailOtpResponseApiCall.data.response.data.message)
+        Toast("error", getEmailOtpResponseApiCall.data.response.data.message)
       }
     } catch (error) {
+      // console.log("error: ", error)
       setIsSubmmitting(0)
-      alert(error.response.data.message)
+      Toast("error", error.message)
     }
   }
 

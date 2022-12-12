@@ -1,8 +1,58 @@
 import OtpInput from "react18-otp-input"
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import Phone from "../../../img/Svg/Phone.svg"
+import { useNavigate } from "react-router-dom"
+import { Toast } from "../../shared-components/Toast/Toast"
+import BigProcessingButton from "../../shared-components/Button/BigProcessingButton"
+import axios from "axios"
+import { useState } from "react"
+import { Get } from "../../../api/httpMethods/httpMethods"
+import { VerifyPhoneOtpEndpoint } from "../../../api/url/url"
 
 function VerifyPhoneOtp() {
+  const navigate = useNavigate()
+  const { phone } = JSON.parse(localStorage.getItem("userData"))
+
+  const [phoneOtp, setPhoneOtp] = useState("")
+  const [disabledOption, setDisabledOption] = useState(false)
+  const [isSubmitting, setIsSubmmitting] = useState(0)
+
+  const handlePhoneChange = (enteredOtp) => {
+    if (enteredOtp.length === 6) {
+      setDisabledOption(false)
+    }
+
+    setPhoneOtp(enteredOtp)
+  }
+
+  async function onPhoneOtpVerifyBtnClick() {
+    setIsSubmmitting(1)
+    try {
+      if (phoneOtp.length < 6) {
+        throw new Error("Invalid otp")
+      }
+
+      const getPhoneOtpResponseApiCall = await Get(
+        `${VerifyPhoneOtpEndpoint}/${phoneOtp}/${phone}`
+      )
+
+      setIsSubmmitting(0)
+
+      if (getPhoneOtpResponseApiCall.data.status === true) {
+        //navigte to phone verify otp screen
+        Toast("success", getPhoneOtpResponseApiCall.data.message)
+        setTimeout(() => {
+          navigate("/login")
+        }, 1000)
+      } else {
+        Toast("error", getPhoneOtpResponseApiCall.data.response.data.message)
+      }
+    } catch (error) {
+      console.log("error: ", error)
+      setIsSubmmitting(0)
+      Toast("error", error.message)
+    }
+  }
   return (
     <main className='font-Mulish'>
       <nav className=' flex justify-between items-center px-[5rem] mt-5  shadow-white drop-shadow-2xl'>
@@ -35,7 +85,8 @@ function VerifyPhoneOtp() {
             Confirm Kuda Account
           </h2>
           <p className='w-[25rem] text-sm my-5'>
-            Please, enter the OTP we just sent *********51.
+            {`Please, enter the OTP we just sent ********* 
+            ${phone.substr(-3, 3)}`}
           </p>
 
           {/* <div className="flex justify-between h-[2rem] my-[2rem] text-center ">
@@ -49,9 +100,11 @@ function VerifyPhoneOtp() {
           <OtpInput
             placeholder={"------"}
             numInputs={6}
+            value={phoneOtp}
             separator={<span>&nbsp; &nbsp;</span>}
+            onChange={handlePhoneChange}
             inputStyle={{
-              fontFamily: "Mulish",
+              fontFamily: "monospace",
               margin: "4px",
               MozAppearance: "textfield",
               width: "40px",
@@ -69,12 +122,12 @@ function VerifyPhoneOtp() {
             <a href='#'>Resend Code</a>
           </p>
 
-          <button
-            type='submit'
-            className='border border-[#40196d] bg-[#40196d] w-[10rem] mt-[2rem] hover:-translate-y-1 duration-700 p-2 rounded-lg text-white text-sm '
-          >
-            Verify
-          </button>
+          <BigProcessingButton
+            text='Verify Otp'
+            onClick={onPhoneOtpVerifyBtnClick}
+            disabled={disabledOption}
+            isSubmitting={isSubmitting}
+          />
         </div>
       </body>
     </main>
