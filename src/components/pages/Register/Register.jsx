@@ -18,7 +18,7 @@ function Register() {
   const showConfirmPasswordDetails = () =>
     setConfirmShowPassword(!showConfirmPassword)
 
-  function Register() {}
+  // function Register() {}
 
   return (
     <main
