@@ -1,7 +1,41 @@
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import { BsFillEyeFill } from "react-icons/bs"
-
+import { useState } from "react"
+import { Toast } from "../../shared-components/Toast/Toast"
+import { Post } from "../../../api/httpMethods/httpMethods"
+import { loginEndpoint } from "../../../api/url/url"
+import { useNavigate } from "react-router-dom"
 function Login() {
+  const redirect = useNavigate()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  async function HandleLogin(e) {
+    try {
+      e.preventDefault()
+      if (email === "" || password === "") {
+        Toast("error", "All fields are compulsory")
+      }
+      const body = {
+        email: email,
+        password: password,
+      }
+
+      const apiCallToLogin = await Post(loginEndpoint, body)
+      if (apiCallToLogin.data.status === true) {
+        Toast("success", apiCallToLogin.data.message)
+        localStorage.setItem("token", apiCallToLogin.data.token)
+        setTimeout(() => {
+          redirect("/dashboard")
+        }, 3000)
+      } else {
+        Toast("error", apiCallToLogin.data.response.data.message)
+      }
+    } catch (err) {
+      console.log("ere: ", err)
+      Toast("error", err.response.data.message)
+    }
+  }
   return (
     <main className='font-Mulish'>
       <nav className=' flex justify-between items-center px-[5rem] mt-5  shadow-white drop-shadow-2xl'>
@@ -35,7 +69,7 @@ function Login() {
             account
           </p>
 
-          <form className=' my-5'>
+          <form onSubmit={HandleLogin} className=' my-5'>
             <label htmlFor='' className='text-sm'>
               Email
             </label>
@@ -49,6 +83,9 @@ function Login() {
                 placeholder='Abc@gmail.com'
                 style={{ border: "none", outline: "none" }}
                 required
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                }}
               />
             </div>
 
@@ -64,6 +101,9 @@ function Login() {
                 placeholder='********'
                 style={{ border: "none", outline: "none" }}
                 required
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                }}
               />
               <BsFillEyeFill className='mr-5' />
             </div>
