@@ -11,6 +11,10 @@ import { useNavigate } from "react-router-dom"
 function ResendPhoneOtp() {
     const navigate = useNavigate()
     const { phone } = JSON.parse(localStorage.getItem("userData"))
+    const getResentPhoneOtpResponseApiCall = await Get(
+              `${ResendPhoneOtpEndpoint}/${phone}`,
+    )
+
 
     const [resentPhoneOtp, setResentPhoneOtp] = useState("")
     const [disabledOption, setDisabledOption] = useState(false)
@@ -30,10 +34,6 @@ function ResendPhoneOtp() {
             if (newPhoneOtp.length < 6) {
                 throw new Error("Invalid otp")
             }
-
-            const getResentPhoneOtpResponseApiCall = await Get(
-              `${ResendPhoneOtpEndpoint}/${phone}`,
-            )
 
             setIsSubmitting(0)
 
