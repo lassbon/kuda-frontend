@@ -2,7 +2,7 @@ import { BsFillArrowUpCircleFill, BsArrowDownCircleFill } from "react-icons/bs"
 
 function TransactionCard({ data }) {
   return (
-    <div className='flex justify-between items-center mt-[2rem] px-[2rem] p-[1rem] rounded-[0.5rem] bg-white drop-shadow-md'>
+    <div className='flex justify-between w-[80%] p-[0.3rem] items-center'>
       <div className='flex items-center'>
         {data.transaction_type === "1" ? (
           <BsFillArrowUpCircleFill className='text-green-400' />
