@@ -20,7 +20,7 @@ function ResendPhoneOtp() {
         if (newPhoneOtp.length === 6){
             setDisabledOption(false)
         }
-        setResentPhoneOtp(newOtp)
+        setResentPhoneOtp(newPhoneOtp)
     }
 
     async function newOtpVerifyBtnClick(e){
