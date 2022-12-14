@@ -28,14 +28,14 @@ function VerifyEmailOtp() {
   async function onEmailOtpVerifyBtnClick() {
     setIsSubmmitting(1)
     try {
-      const { email, phone } = JSON.parse(localStorage.getItem("userData"))
+    
 
-      if (emailOtp.length < 6) {
+      if (emailOtp.length < 25) {
         throw new Error("Invalid otp")
       }
 
       const getEmailOtpResponseApiCall = await Get(
-        `${VerifyEmailOtpEndpoint}/${emailOtp}/${email}/${phone}`
+        `${VerifyEmailOtpEndpoint}/${emailOtp}/${email}/${email}`
       )
 
       setIsSubmmitting(0)
@@ -88,7 +88,7 @@ function VerifyEmailOtp() {
             Confirm Kuda Account
           </h2>
           <p className='w-[25rem] text-sm my-5'>
-            Please, enter the OTP we just sent to your email.
+            Please, enter the OTP we just sent to your mail.
           </p>
 
           {/* <div className="flex justify-between h-[2rem] my-[2rem] text-center ">
