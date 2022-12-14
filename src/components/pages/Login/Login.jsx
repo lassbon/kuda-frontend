@@ -1,6 +1,6 @@
 import Kuda_Logo from "../../../img/Svg/Kuda_Logo.svg"
 import { BsFillEyeFill } from "react-icons/bs"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Toast } from "../../shared-components/Toast/Toast"
 import { Post } from "../../../api/httpMethods/httpMethods"
 import { loginEndpoint } from "../../../api/url/url"
@@ -79,7 +79,7 @@ function Login() {
                 type='email'
                 id='Email'
                 name='Email'
-                className='rounded-lg w-[25rem] h-[3rem] my-3 p-2'
+                className='rounded-lg w-[25rem] h-[3rem] my-3 p-2 focus:ring-0'
                 placeholder='Abc@gmail.com'
                 style={{ border: "none", outline: "none" }}
                 required
@@ -97,7 +97,7 @@ function Login() {
                 type='password'
                 id='Password'
                 name='Password'
-                className='rounded-lg  w-[23rem] h-[3rem] p-2'
+                className='rounded-lg  w-[23rem] h-[3rem] p-2 focus:ring-0'
                 placeholder='********'
                 style={{ border: "none", outline: "none" }}
                 required

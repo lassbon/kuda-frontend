@@ -1,4 +1,4 @@
-import React from "react"
+import { useEffect, useState } from "react"
 import logo from "../../../img/Svg/Kuda_Logo.svg"
 import home from "../../../img/Svg/Home.svg"
 import pay from "../../../img/Svg/Pay.svg"
@@ -15,9 +15,110 @@ import { SiAbbrobotstudio } from "react-icons/si"
 import background from "../../../img/Svg/Background.svg"
 import beneficiaries from "../../../img/Svg/Beneficiaries.svg"
 import { MdOutlineCancel } from "react-icons/md"
-import request from "../../../img/Svg/Request.svg"
+
 import Navbar from "../Navbar/Navbar"
+import { Get } from "../../../api/httpMethods/httpMethods"
+import {
+  ProfileEndpoint,
+  TransactionHistoryEndpoint,
+} from "../../../api/url/url"
+import EmptyTransactionCard from "./EmptyTransactionCard"
+import { useRouteLoaderData } from "react-router-dom"
+import { IoCompassOutline } from "react-icons/io5"
+import { Toast } from "../../shared-components/Toast/Toast"
+import TransactionCard from "./TransactionCard"
+
 function Dashboard() {
+  const [userData, setUserData] = useState({
+    status: true,
+    message: "",
+    data: {
+      sn: 1,
+      customer_id: "",
+      title: "",
+      lastname: "",
+      othernames: "",
+      email: "",
+      is_email_verified: true,
+      phone_number: "",
+      is_phone_number_verified: true,
+      gender: "",
+      house_number: "",
+      street: "",
+      landmark: "",
+      local_govt: "",
+      dob: "",
+      nin: "",
+      is_nin_verified: "",
+      bvn: "",
+      is_bvn_verified: "",
+      country: null,
+      state_origin: null,
+      local_govt_origin: null,
+      means_of_id: null,
+      means_of_id_number: null,
+      is_means_of_id_number_verified: null,
+      photo: null,
+      marital_status: null,
+      is_disable: false,
+      is_disable_reason: null,
+      createdAt: "",
+      updatedAt: "",
+      accts: {
+        account_number: "",
+        account_name: "",
+        balance: 0.0,
+      },
+      wallet: {
+        sn: null,
+        wallet_id: "",
+        wallet_type: null,
+        balance: 0.0,
+        currency: null,
+        customer_id: "",
+        createdAt: null,
+        updatedAt: null,
+      },
+    },
+  })
+  const [transactionHistory, setTransactionHistory] = useState([])
+
+  useEffect(() => {
+    return async () => {
+      try {
+        const token = localStorage.getItem("token")
+
+        const getUserProfileFromApi = await Get(ProfileEndpoint, token)
+        const getTransactionHistoryFromApi = await Get(
+          TransactionHistoryEndpoint,
+          token
+        )
+        const newObj = {
+          ...userData,
+          status: getUserProfileFromApi.data.status,
+          message: getUserProfileFromApi.data.message,
+          data: {
+            ...userData.data,
+            accts: {
+              ...userData.data.accts,
+            },
+            wallet: {
+              ...userData.data.wallet,
+              balance: getUserProfileFromApi.data.data.wallet.balance,
+            },
+          },
+        } //this is a new memory that allow react to re-render the component
+        setUserData(newObj)
+        setTransactionHistory(
+          ...transactionHistory,
+          getTransactionHistoryFromApi.data.data
+        )
+      } catch (error) {
+        Toast("error", error.response.data.message)
+      }
+    }
+  }, [userData.data.wallet.balance])
+
   return (
     <div className='font-Mulish  '>
       <Navbar />
@@ -29,7 +130,9 @@ function Dashboard() {
               <img src={flag} alt='flag' className='w-[3rem] ' />
               <div className=' mx-[1rem]'>
                 <h2 className='font-semibold text-[0.7em] '>Nigerian Naira</h2>
-                <h3 className='font-bold text-[2rem] '>#0.00</h3>
+                <h3 className='font-bold text-[2rem] '>
+                  #{userData.data.wallet.balance || "0.00"}
+                </h3>
               </div>
             </div>
             <div className='flex flex-col gap-y-2'>
@@ -116,15 +219,14 @@ function Dashboard() {
           </div>
 
           <div className=' mt-[2rem] '>
-            <img src={request} alt='request' className='w-[3rem] mx-auto' />
-
             <div className='flex flex-col items-center   mx-[1rem] w-fill '>
-              <h6 className='w-[21rem] text-center font-semibold text-black'>
-                Nothing to see yet.{" "}
-              </h6>
-              <h1 className='w-[21rem]  text-center'>
-                Spend some money and we'll show you your transactions here.
-              </h1>
+              {transactionHistory.length === 0 ? (
+                <EmptyTransactionCard />
+              ) : (
+                transactionHistory.map((item) => (
+                  <TransactionCard data={item} />
+                ))
+              )}
 
               <button
                 type='submit'

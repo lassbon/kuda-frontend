@@ -134,7 +134,7 @@ function Register() {
                     type='text'
                     id='Surname'
                     name='Surname'
-                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff]'
+                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff] focus:ring-0'
                     placeholder='Surname'
                     style={{ border: "none", outline: "none" }}
                     required
@@ -153,7 +153,7 @@ function Register() {
                     type='text'
                     id='Othernames'
                     name='Othernames'
-                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff]'
+                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff] focus:ring-0'
                     placeholder='Othernames'
                     style={{ border: "none", outline: "none" }}
                     required
@@ -173,7 +173,7 @@ function Register() {
                     type='email'
                     id='Email'
                     name='Email'
-                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff]'
+                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff] focus:ring-0'
                     placeholder='Abc@gmail.com'
                     style={{ border: "none", outline: "none" }}
                     required
@@ -192,7 +192,7 @@ function Register() {
                     type='tel'
                     id='tel'
                     name='telephone'
-                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff]'
+                    className='rounded-lg w-[20rem] h-[3rem] my-3 p-2 bg-[#dfe3ff] focus:ring-0'
                     placeholder='081********'
                     style={{ border: "none", outline: "none" }}
                     required
@@ -211,7 +211,7 @@ function Register() {
                     type={showPassword ? "text" : "password"}
                     id='Password'
                     name='Password'
-                    className='rounded-lg  w-[20rem] h-[3rem] p-2  bg-[#dfe3ff] '
+                    className='rounded-lg  w-[20rem] h-[3rem] p-2  bg-[#dfe3ff] focus:ring-0'
                     placeholder='********'
                     style={{ border: "none", outline: "none" }}
                     required
@@ -242,7 +242,7 @@ function Register() {
                     type={showConfirmPassword ? "text" : "password"}
                     id='ResetPassword'
                     name='ResetPassword'
-                    className='rounded-lg  w-[20rem] h-[3rem] p-2  bg-[#dfe3ff] '
+                    className='rounded-lg  w-[20rem] h-[3rem] p-2  bg-[#dfe3ff] focus:ring-0'
                     placeholder='********'
                     style={{ border: "none", outline: "none" }}
                     required
