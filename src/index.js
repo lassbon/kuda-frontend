@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import {
-  createBrowserRouter,
+  createBrowserRouter as Router,
   RouterProvider,
   Route,
 } from "react-router-dom";
@@ -23,7 +23,7 @@ import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/Update
 import VerifyEmailOtp from "./components/pages/Otp/VerifyEmailOtp";
 import VerifyPhoneOtp from "./components/pages/Otp/VerifyPhoneOtp";
 
-const router = createBrowserRouter(
+const router = Router(
   [
   {
     path: "/",

@@ -69,6 +69,7 @@ function Register() {
           email: email,
           phone: phone,
         }
+
         localStorage.setItem("userData", JSON.stringify(objToSave))
         redirect("/register/verify-otp")
       } else {

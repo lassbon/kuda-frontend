@@ -11,71 +11,31 @@ import Account from "./components/pages/Account/AccountDashboard"
 import Referrals from "./components/pages/Referrals/Referrals"
 import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/UpdateTransactionPin"
 import VerifyEmailOtp from "./components/pages/Otp/VerifyEmailOtp"
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom"
+import {
+  createBrowserRouter as Router,
+  RouterProvider,
+  Route,
+} from "react-router-dom"
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HomePage />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/send-money",
-      element: <Pay />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/login",
-      element: <Login />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/dashboard",
-      element: <Dashboard />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/invest",
-      element: <Invest />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/budget",
-      element: <Budget />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/card",
-      element: <Card />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/account",
-      element: <Account />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/referrals",
-      element: <Referrals />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/update-pin",
-      element: <UpdateTransactionPin />,
-      errorElement: <PageNotFound />,
-    },
-    {
-      path: "/register/verify-otp",
-      element: <VerifyEmailOtp />,
-      errorElement: <PageNotFound />,
-    },
-  ])
-
-  return <> {router} </>
+  return (
+    <>
+      <Router>
+        <Route component={<HomePage />} path='/' />
+        <Route component={<Pay />} path='/send-money' />
+        <Route component={<Register />} path='/register' />
+        <Route component={<Login />} path='/login' />
+        <Route component={<Dashboard />} path='/dashboard' />
+        <Route component={<Invest />} path='/invest' />
+        <Route component={<Budget />} path='/budget' />
+        <Route component={<Card />} path='/card' />
+        <Route component={<Account />} path='/account' />
+        <Route component={<Referrals />} path='/refferals' />
+        <Route component={<UpdateTransactionPin />} path='/update-pin' />
+        <Route component={<VerifyEmailOtp />} path='/register/verify-otp' />
+      </Router>
+    </>
+  )
 }
+
+export default App
