@@ -3,13 +3,13 @@ import KudaImage from "../../../img/Svg/Kudaimage.svg"
 import GreaterThan from "../../../img/Svg/Greaterthan.svg"
 import HumanImage from "../../../img/Svg/Humanimage.svg"
 import GreenArrow from "../../../img/Svg/Greenarrow.svg"
-import Navbar from "../Navbar/Navbar"
+import Container from "../Container/Container"
 import PayCom from "./Paycom"
 import Header from "./Header"
 function Sendmoney() {
   return (
     <>
-      <Navbar />
+      <Container />
 
       <main className='container'>
         <PayCom />

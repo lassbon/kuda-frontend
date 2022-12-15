@@ -5,7 +5,7 @@ import PaybillImage from "../../../img/Svg/Paybill.svg"
 import GiftcardImage from "../../../img/Svg/Giftcard.svg"
 import CardlessImage from "../../../img/Svg/Cardless.svg"
 
-function PayNavbar() {
+function PayContainer() {
   return (
     <div className='flex justify-center gap-x-8 mb-10'>
       <a
@@ -52,4 +52,4 @@ function PayNavbar() {
   )
 }
 
-export default PayNavbar
+export default PayContainer
