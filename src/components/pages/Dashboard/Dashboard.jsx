@@ -25,8 +25,10 @@ import {
 import EmptyTransactionCard from "./EmptyTransactionCard"
 import { Toast } from "../../shared-components/Toast/Toast"
 import TransactionCard from "./TransactionCard"
-
+import AddMoneyPopUp from "./AddMoneyPopUp/AddMoneyPopUp"
+import Loader from "../../shared-components/Loader/Loader"
 function Dashboard() {
+  const [me, setMe] = useState(false)
   const [userData, setUserData] = useState({
     status: true,
     message: "",
@@ -97,6 +99,7 @@ function Dashboard() {
           message: getUserProfileFromApi.data.message,
           data: {
             ...userData.data,
+            email: getUserProfileFromApi.data.email,
             accts: {
               ...userData.data.accts,
               account_number:
@@ -113,14 +116,20 @@ function Dashboard() {
           ...transactionHistory,
           getTransactionHistoryFromApi.data.data
         )
+        localStorage.setItem("user", JSON.stringify(userData))
       } catch (error) {
         Toast("error", error.response.data.message)
       }
     }
   }, [userData.data.wallet.balance])
 
+  function handleAddMoney() {
+    setMe(!me)
+  }
+
   return (
     <Container>
+      {me && <AddMoneyPopUp />}
       <div className='font-Mulish  '>
         <div className='flex justify-center '>
           <div>
@@ -138,7 +147,6 @@ function Dashboard() {
               </div>
               <div className='flex flex-col gap-y-2'>
                 <div
-                  disable
                   href='#'
                   className='flex py-[0.5rem] px-[1rem] bg-white drop-shadow-md rounded-[0.5rem] '
                 >
@@ -150,7 +158,13 @@ function Dashboard() {
                   className='flex py-[0.5rem] px-[1rem] bg-white drop-shadow-md rounded-[0.5rem] hover:-translate-y-1 duration-700 '
                 >
                   <img src={addMoney} alt='addMoney' className='w-[1rem] ' />
-                  <p className='mx-[0.7rem] text-[#765a96] '> Add Money</p>
+                  <p
+                    className='mx-[0.7rem] text-[#765a96] '
+                    onClick={handleAddMoney}
+                  >
+                    {" "}
+                    Add Money
+                  </p>
                 </a>
               </div>
             </div>
@@ -226,9 +240,10 @@ function Dashboard() {
                 {transactionHistory.length === 0 ? (
                   <EmptyTransactionCard />
                 ) : (
-                  transactionHistory.map((item) => (
-                    <TransactionCard data={item} />
-                  ))
+                  transactionHistory.map(
+                    (item, i) =>
+                      i <= 4 && <TransactionCard data={item} key={i} />
+                  )
                 )}
 
                 <button

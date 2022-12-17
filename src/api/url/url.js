@@ -6,3 +6,5 @@ export const VerifyEmailOtpEndpoint = `${baseUrl}/verify-email-otp`
 export const VerifyPhoneOtpEndpoint = `${baseUrl}/verify-phone-otp` 
 export const ProfileEndpoint = `${baseUrl}/profile`
 export const TransactionHistoryEndpoint = `${baseUrl}/account-statement`
+export const startFundWalletEndpoint = `${baseUrl}/fund-wallet/start`
+export const completeFundWalletEndpoint = `${baseUrl}/fund-wallet/complete`
