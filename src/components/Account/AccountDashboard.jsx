@@ -1,4 +1,6 @@
-import React from 'react'
+
+import {useState} from 'react'
+
 import Card from './Card'
 
 import account from "../../img/account.jpg"
@@ -18,6 +20,11 @@ import Navbar from './Navbar'
 
 
 const AccountDashboard = () => {
+
+    const [toggle, setToggle] = useState(false)
+    function isToggled(){
+        setToggle(!toggle)
+    }
   return (
     <main className="font-Mulish">
         <Navbar />
@@ -56,7 +63,7 @@ const AccountDashboard = () => {
                    <Card text='Legal' icon={svg18}/>
                    <Card text='FAQs' icon={svg13}/>
                    <Card text='Chat With Us' icon={svg19}/>
-                   <Card text='Hide Balance' icon={svg20} isIconChevron={false}/>
+                   <Card text='Hide Balance' icon={svg20} isIconChevron={false} onclick={isToggled}/>
                    <Card text='Dark Mode' icon={svg21} isIconChevron={false}/>
                 </div>   
             </div>

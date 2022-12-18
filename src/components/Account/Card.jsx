@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaChevronRight} from 'react-icons/fa'
 import {IoToggleSharp} from 'react-icons/io5'
-const Card = ({text, icon, isIconChevron=true}) => {
+const Card = ({text, icon,onclick, isIconChevron=true}) => {
   return (
     <div className="shadow-4xl flex justify-between items-center bg-white px-3 py-4 rounded-md">
     <div className="inner flex justify-between items-center gap-3">
