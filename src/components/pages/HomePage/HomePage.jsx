@@ -19,9 +19,10 @@ import youtube from "../../../img/Svg/youtube.svg"
 function HomePage() {
   return (
     <>
-      <main className='font-Mulish'>
-        <nav className='flex justify-between px-[3rem] border drop-shadow-lg items-center'>
+      <main className=' font-Mulish'>
+        <nav className='pr-[5rem] flex justify-between px-[3rem] border drop-shadow-lg items-center'>
           <div className='flex'>
+            <div></div>
             <button className='mx-3 text-[0.9rem] text-[#745895]'>
               <img src={logo} alt='logo' />
             </button>
@@ -58,7 +59,7 @@ function HomePage() {
             <div className='flex  justify-between  items-center'>
               <div className='mx-[5rem]'>
                 <h1 className='    w-[25rem] text-[#40196d] text-[2.5rem] font-[Mulish] '>
-                  Download Kuda , open an account!
+                  Download Kuda from Zulfah , open an account!
                 </h1>
                 <h1 className=' mt-[1rem]  w-[22rem] '>
                   Scan the QR code below with your phone camera to download the

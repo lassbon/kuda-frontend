@@ -22,7 +22,7 @@ import Referrals from "./components/pages/Referrals/Referrals";
 import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/UpdateTransactionPin";
 import VerifyEmailOtp from "./components/pages/Otp/VerifyEmailOtp";
 import VerifyPhoneOtp from "./components/pages/Otp/VerifyPhoneOtp";
-
+import App from "./App";
 const router = Router(
   [
   {
@@ -85,7 +85,6 @@ const router = Router(
     element: <VerifyEmailOtp />,
     errorElement:<PageNotFound />
   },
-
   {
     path: "/register/verify-phone-otp",
     element: <VerifyPhoneOtp />,
@@ -97,15 +96,18 @@ const router = Router(
 
   ]
  
-);
+)
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
     <ToastContainer />
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
+      {/* <Router >
+        <App />
+      </Router> */}
   </React.StrictMode>
-);
+)
 
 
 // If you want to start measuring performance in your app, pass a function

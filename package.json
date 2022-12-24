@@ -19,6 +19,7 @@
     "react-toastify": "^9.1.1",
     "react18-input-otp": "^1.1.1",
     "react18-otp-input": "^1.0.3",
+    "surge": "^0.23.1",
     "sweetalert-react": "^0.4.11",
     "tw-elements": "^1.0.0-alpha13",
     "web-vitals": "^2.1.4"
@@ -27,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy" : "npm run build && cd build && surge . kuda-app.surge.sh"
+
   },
   "eslintConfig": {
     "extends": [
