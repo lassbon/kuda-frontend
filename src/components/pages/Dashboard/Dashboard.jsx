@@ -27,7 +27,10 @@ import { Toast } from "../../shared-components/Toast/Toast"
 import TransactionCard from "./TransactionCard"
 import AddMoneyPopUp from "./AddMoneyPopUp/AddMoneyPopUp"
 import Loader from "../../shared-components/Loader/Loader"
-function Dashboard() {
+import {useBlurContext} from '../../context/ContextBlur'
+function Dashboard({active, inactive}) {
+  // const {isToggled} = useBlurContext()
+  // console.log(isToggled)
   const [me, setMe] = useState(false)
   const [userData, setUserData] = useState({
     status: true,
@@ -136,14 +139,16 @@ function Dashboard() {
             <div className='flex justify-between mt-[3rem] w-[40rem] '>
               <div className='flex  items-center'>
                 <img src={flag} alt='flag' className='w-[3rem] ' />
-                <div className=' mx-[1rem]'>
+                <div className=' mx-[1rem] relative'>
+                {active==false &&<div className=" backdrop-blur-[7px] bg-[#ffffff33] absolute top-0 left-0 w-full h-full z-10 flex justify-center items-center"></div>}
                   <h2 className='font-semibold text-[0.7em] '>
                     Nigerian Naira
                   </h2>
-                  <h3 className='font-bold text-[2rem] '>
+                  <h3 className='font-bold text-[2rem]' >
                     #{userData.data.wallet.balance || "0.00"}
                   </h3>
                 </div>
+               
               </div>
               <div className='flex flex-col gap-y-2'>
                 <div

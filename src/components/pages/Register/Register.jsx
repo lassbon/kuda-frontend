@@ -91,7 +91,7 @@ function Register() {
         backgroundPosition: "right",
       }}
     >
-      <nav className=' flex justify-between items-center px-[5rem] mt-5  shadow-white drop-shadow-2xl'>
+      <nav className=' flex justify-between items-center px-[5rem] mt-5 3'>
         <div className='hover:transition ease-in-out delay-50'>
           <img src={Kuda_Logo} className=' w-[5rem] ' alt='Kuda' />
         </div>

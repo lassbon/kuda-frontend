@@ -1,4 +1,4 @@
-import React from "react"
+import { useNavigate } from "react-router-dom";
 import { IoCopy } from "react-icons/io5"
 import Card from "./components/Card"
 import Container from "../Container/Container"
@@ -15,11 +15,12 @@ import svg19 from "../../../img/Svg/svg19.svg"
 import svg20 from "../../../img/Svg/svg20.svg"
 import svg21 from "../../../img/Svg/svg21.svg"
 
-const AccountDashboard = () => {
+const AccountDashboard = ({active, inactive}) => {
+  const redirect = useNavigate()
   return (
     <Container>
       <main className='font-Mulish'>
-        <div className='content px-4 sm:flex sm:flex-col sm:items-center text-kuda-purple'>
+        <div className='content px-4 sm:flex sm:flex-col sm:items-center text-kuda-purple bg-white drop-shadow-2xl'>
           <h1 className='font-bold text-2xl text-center my-8'>Account</h1>
           <div className='shadow-3xl p-4 bg-white rounded-sm'>
             <div className='sm:flex sm:justify-between  p-4 sm:gap-12 max-w-[53.5rem] w-full'>
@@ -45,8 +46,8 @@ const AccountDashboard = () => {
                     </p>
                   </div>
                 </div>
-                <Card text='Verify Profile' icon={svg10} />
-                <Card text='Statements & Reports' icon={svg12} />
+                <Card text='Verify Profile' icon={svg10}  />
+                <Card text='Statements & Reports' icon={svg12} onClick={()=>redirect('/profile-page')}/>
                 <Card text='Saved Cards' icon={svg13} />
                 <Card text='Get Help' icon={svg14} />
                 <Card text='Linked Accounts' icon={svg15} />
@@ -56,16 +57,16 @@ const AccountDashboard = () => {
               <div className='right sm:basis-1/2  flex flex-col sm:gap-y-4'>
                 <div className='invite text-center bg-[#40196d] px-20 py-5 rounded-sm'>
                   <p className='text-white mb-2'>Invite and Earn</p>
-                  <button className='px-8 py-2 bg-opay-green rounded-lg'>
+                  <button onClick={()=>redirect('/referrals')} className='px-8 py-2 bg-opay-green rounded-lg'>
                     View code
                   </button>
                 </div>
 
                 <Card text='Security' icon={svg17} />
-                <Card text='Legal' icon={svg18} />
-                <Card text='FAQs' icon={svg13} />
+                <Card text='Legal' icon={svg18}  onClick={()=>redirect('/legal')}/>
+                <Card text='FAQs' icon={svg13} onClick={()=>redirect('/faqs')} />
                 <Card text='Chat With Us' icon={svg19} />
-                <Card text='Hide Balance' icon={svg20} isIconChevron={false} />
+                <Card text='Hide Balance' icon={svg20} isIconChevron={false} active={active} inactive={inactive} />
                 <Card text='Dark Mode' icon={svg21} isIconChevron={false} />
               </div>
             </div>
