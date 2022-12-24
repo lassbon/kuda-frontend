@@ -3,10 +3,12 @@ import ReactDOM from "react-dom/client"
 import {
   createBrowserRouter as Router,
   RouterProvider,
-  Route,
+ 
 } from "react-router-dom";
+// import App from './App'
 import "./App.css"
-import { ToastContainer, toast } from 'react-toastify';
+import {BlurContextProvider} from './components/context/ContextBlur'
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from "./components/pages/HomePage/HomePage";
 import Pay from "./components/pages/Pay/Sendmoney";
@@ -22,8 +24,14 @@ import Referrals from "./components/pages/Referrals/Referrals";
 import UpdateTransactionPin from "./components/pages/UpdateTransactionPin/UpdateTransactionPin";
 import VerifyEmailOtp from "./components/pages/Otp/VerifyEmailOtp";
 import VerifyPhoneOtp from "./components/pages/Otp/VerifyPhoneOtp";
-
+import Faqs from "./components/pages/Faqs/Faqs"
+import ProfilePage from './components/pages/Profile/ProfilePage'
+import Legal from './components/pages/Legal/Legal'
+import AccountStatement from './components/pages/Statement/AccountStatement'
+import App from "./App";
+import {BrowserRouter} from 'react-router-dom'
 const router = Router(
+  
   [
   {
     path: "/",
@@ -90,9 +98,26 @@ const router = Router(
     path: "/register/verify-phone-otp",
     element: <VerifyPhoneOtp />,
     errorElement:<PageNotFound />
+  },
+
+  {
+    path:'/faqs', 
+    element:<Faqs />,
+    errorElement:<PageNotFound />
+  },
+  {
+    path:'/profile-page',
+    element:<ProfilePage />,
+    errorElement:<PageNotFound />
+  },
+  {path:'/legal',
+   element:<Legal />,
+   errorElement:<PageNotFound />
+  },
+  {path:'/account-statement',
+   element:<AccountStatement />,
+   errorElement:<PageNotFound />
   }
-
-
   
 
   ]
@@ -102,8 +127,13 @@ const router = Router(
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
+    {/* <BlurContextProvider>
     <ToastContainer />
       <RouterProvider router={router} />
+    </BlurContextProvider> */}
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
